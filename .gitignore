@@ -8,4 +8,5 @@ dist/
 coverage.xml
 .pytest_cache/
 .DS_Store
+.python-version
 demo.cast
