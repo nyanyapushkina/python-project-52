@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'task_manager',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,6 +84,8 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
         default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
     )
 }
