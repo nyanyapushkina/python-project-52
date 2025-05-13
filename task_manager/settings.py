@@ -26,11 +26,11 @@ SECRET_KEY = 'django-insecure-c!fnvx-^5!r*%5prp70lcix8rd!7f!wew=^ud_jn0=6f#$7x3z
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://python-project-52-3ho6.onrender.com',
-    'webserver', 
-    'localhost', 
+    'python-project-52-3ho6.onrender.com',
+    'webserver',
+    'localhost',
     '127.0.0.1',
-    ]
+]
 
 # Application definition
 
