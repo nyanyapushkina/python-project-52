@@ -39,11 +39,9 @@
         {% endfor %}
     {% endif %}
 
-    <main class="flex-grow-1">
-        <div class="container-lg mt-3">
-            {% block main %} {% endblock %}
-        </div>
-    </main>
+    <div class="container wrapper flex-grow-1">
+      {% block main %}{% endblock %}
+    </div>
     
     <footer>
       <div class="container my-5 pt-4 border-top">
