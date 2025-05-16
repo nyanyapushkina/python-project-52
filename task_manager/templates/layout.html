@@ -1,4 +1,5 @@
 {% load i18n %} 
+{% load static %}
 
 <!DOCTYPE html>
 <html llang="{{ LANGUAGE_CODE }}">
@@ -7,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% trans "Task Manager Hexlet" %}{% endblock %}</title>
     <meta name="description" content="Forth project for Hexlet.io">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet" crossorigin="anonymous">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   </head>
 
   <body class="d-flex flex-column min-vh-100">
@@ -51,8 +53,5 @@
         <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
       </div>
     </footer>
-
-        <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
 
 </html>
