@@ -10,3 +10,4 @@ coverage.xml
 .DS_Store
 .python-version
 demo.cast
+staticfiles/

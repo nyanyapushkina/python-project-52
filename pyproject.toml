@@ -1,10 +1,20 @@
 [project]
+authors = [
+    {name = "Arina Khokhlova", email = "khokhlova.arina.v@gmail.com"},
+]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Add your description here"
+description = "Task manager"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "django>=4.2.21",
     "whitenoise>=6.9.0",
 ]
+
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["task_manager"]
