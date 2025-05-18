@@ -20,6 +20,7 @@ from django.urls import path
 from task_manager.views import IndexView
 
 urlpatterns = [
+    path('users/', include('users.urls')),
     path('', IndexView.as_view(), name='index'), 
     path('admin/', admin.site.urls),
 ]
