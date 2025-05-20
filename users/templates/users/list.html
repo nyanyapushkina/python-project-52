@@ -1,0 +1,12 @@
+{% extends 'base/layout.html' %}
+{% load i18n %}
+
+{% block nav_items %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="my-4">{% trans "Users" %}</h1>
+    <table class="table table-striped">
+    </table>
+{% endblock %}
