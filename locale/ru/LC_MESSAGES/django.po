@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-20 10:11+0000\n"
+"POT-Creation-Date: 2025-05-20 14:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Менеджер задач Hexlet"
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base/layout.html:25 users/templates/list.html:9
+#: task_manager/templates/base/layout.html:25 users/templates/users/list.html:9
 msgid "Users"
 msgstr "Пользователи"
 
@@ -48,13 +48,13 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/templates/base/layout.html:49 users/templates/login.html:7
-#: users/templates/login.html:11
+#: task_manager/templates/base/layout.html:49
+#: users/templates/users/login.html:7 users/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base/layout.html:52 users/templates/create.html:4
-#: users/templates/create.html:8
+#: task_manager/templates/base/layout.html:52
+#: users/templates/users/create.html:4 users/templates/users/create.html:8
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -70,68 +70,68 @@ msgstr "Практические курсы по программировани�
 msgid "Learn more"
 msgstr "Узнать больше"
 
-#: users/templates/create.html:16 users/templates/update.html:16
+#: users/templates/users/create.html:16 users/templates/users/update.html:16
 #, fuzzy
 #| msgid "Users"
 msgid "Username"
 msgstr "Пользователи"
 
-#: users/templates/create.html:19 users/templates/update.html:19
+#: users/templates/users/create.html:19 users/templates/users/update.html:19
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: users/templates/create.html:24 users/templates/update.html:24
+#: users/templates/users/create.html:24 users/templates/users/update.html:24
 msgid "First name"
 msgstr "Имя"
 
-#: users/templates/create.html:29 users/templates/update.html:29
+#: users/templates/users/create.html:29 users/templates/users/update.html:29
 msgid "Last name"
 msgstr "Фамилия"
 
-#: users/templates/create.html:34 users/templates/update.html:34
+#: users/templates/users/create.html:34 users/templates/users/update.html:34
 msgid "Password"
 msgstr "Пароль"
 
-#: users/templates/create.html:38 users/templates/update.html:39
+#: users/templates/users/create.html:38 users/templates/users/update.html:39
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: users/templates/create.html:44 users/templates/update.html:45
+#: users/templates/users/create.html:44 users/templates/users/update.html:45
 msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
-#: users/templates/create.html:47 users/templates/update.html:49
+#: users/templates/users/create.html:47 users/templates/users/update.html:49
 msgid "Enter the same password as before, for verification."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: users/templates/create.html:51
+#: users/templates/users/create.html:51
 #, fuzzy
 #| msgid "Registration"
 msgid "Register"
 msgstr "Регистрация"
 
-#: users/templates/delete.html:4 users/templates/delete.html:9
+#: users/templates/users/delete.html:4 users/templates/users/delete.html:9
 msgid "Delete user"
 msgstr "Удалить"
 
-#: users/templates/delete.html:10
+#: users/templates/users/delete.html:10
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: users/templates/delete.html:13
+#: users/templates/users/delete.html:13
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: users/templates/delete.html:14 users/templates/update.html:54
+#: users/templates/users/delete.html:14 users/templates/users/update.html:54
 msgid "Cancel"
 msgstr "Отмена"
 
-#: users/templates/update.html:4 users/templates/update.html:8
+#: users/templates/users/update.html:4 users/templates/users/update.html:8
 msgid "Edit user"
 msgstr "Изменить"
 
-#: users/templates/update.html:53
+#: users/templates/users/update.html:53
 msgid "Update"
 msgstr "Изменение пользователя"
