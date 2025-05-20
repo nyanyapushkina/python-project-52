@@ -71,10 +71,8 @@ msgid "Learn more"
 msgstr "Узнать больше"
 
 #: users/templates/users/create.html:16 users/templates/users/update.html:16
-#, fuzzy
-#| msgid "Users"
 msgid "Username"
-msgstr "Пользователи"
+msgstr "Имя пользователя"
 
 #: users/templates/users/create.html:19 users/templates/users/update.html:19
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
