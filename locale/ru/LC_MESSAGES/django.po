@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-20 14:19+0000\n"
+"POT-Creation-Date: 2025-05-28 15:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,116 +20,283 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/base/layout.html:9
-msgid "Task Manager Hexlet"
-msgstr "Менеджер задач Hexlet"
+#: task_manager/settings.py:149
+msgid "English"
+msgstr "Английский"
 
-#: task_manager/templates/base/layout.html:17
+#: task_manager/settings.py:150
+msgid "Russian"
+msgstr "Русский"
+
+#: task_manager/templates/index.html:4
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base/layout.html:25 users/templates/users/list.html:9
+#: task_manager/templates/index.html:8
+#, fuzzy
+#| msgid "Task Manager"
+msgid "Welcome to Task Manager"
+msgstr "Менеджер задач"
+
+#: task_manager/templates/index.html:10
+msgid "Task Manager is a simple but powerful system for managing tasks."
+msgstr "Менеджер задач – простой, но эффективный инструмент для управления задачами."
+
+#: task_manager/templates/index.html:11
+msgid "Create tasks, assign performers and update statuses – all in one place."
+msgstr "Создавайте задачи, назначайте исполнителей и обновляйте статусы – и все это в одном месте."
+
+#: task_manager/templates/login_form.html:4
+#: task_manager/templates/login_form.html:5
+msgid "Log In"
+msgstr "Вход"
+
+#: task_manager/templates/login_form.html:6
+msgid "Enter"
+msgstr "Войти"
+
+#: task_manager/templates/login_form.html:10
+msgid "Don’t have an account?"
+msgstr "Нет аккаунта?"
+
+#: task_manager/templates/login_form.html:11
+msgctxt "button"
+msgid "Sign Up"
+msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/index.html:4
+#: task_manager/templates/users/index.html:10
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base/layout.html:33
-msgid "Statuses"
-msgstr "Статусы"
-
-#: task_manager/templates/base/layout.html:36
-msgid "Labels"
-msgstr "Метки"
-
-#: task_manager/templates/base/layout.html:39
-msgid "Tasks"
-msgstr "Задачи"
-
-#: task_manager/templates/base/layout.html:44
-msgid "Logout"
-msgstr "Выход"
-
-#: task_manager/templates/base/layout.html:49
-#: users/templates/users/login.html:7 users/templates/users/login.html:11
-msgid "Login"
-msgstr "Вход"
-
-#: task_manager/templates/base/layout.html:52
-#: users/templates/users/create.html:4 users/templates/users/create.html:8
-msgid "Registration"
-msgstr "Регистрация"
-
-#: task_manager/templates/index.html:8
-msgid "Hello from Hexlet!"
-msgstr "Привет от Хекслета!"
-
-#: task_manager/templates/index.html:9
-msgid "Practical programming courses"
-msgstr "Практические курсы по программированию"
-
-#: task_manager/templates/index.html:11
-msgid "Learn more"
-msgstr "Узнать больше"
-
-#: users/templates/users/create.html:16 users/templates/users/update.html:16
+#: task_manager/templates/users/index.html:18
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: users/templates/users/create.html:19 users/templates/users/update.html:19
-msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr ""
-"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
-"+/-/_."
-
-#: users/templates/users/create.html:24 users/templates/users/update.html:24
-msgid "First name"
+#: task_manager/templates/users/index.html:19
+#, fuzzy
+#| msgid "First name"
+msgid "Full name"
 msgstr "Имя"
 
-#: users/templates/users/create.html:29 users/templates/users/update.html:29
-msgid "Last name"
-msgstr "Фамилия"
+#: task_manager/templates/users/index.html:20
+msgid "Date created"
+msgstr "Дата создания"
 
-#: users/templates/users/create.html:34 users/templates/users/update.html:34
-msgid "Password"
-msgstr "Пароль"
+#: task_manager/templates/users/index.html:34
+#, fuzzy
+#| msgid "Edit user"
+msgid "Edit"
+msgstr "Изменить"
 
-#: users/templates/users/create.html:38 users/templates/users/update.html:39
+#: task_manager/templates/users/index.html:37
+#, fuzzy
+#| msgid "Delete user"
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/users/index.html:48
+msgid "No users found."
+msgstr "Пользователи не найдены."
+
+#: task_manager/templates/users/registration_form.html:12
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: task_manager/templates/users/registration_form.html:14
+msgctxt "button"
+msgid "Log In"
+msgstr "Войти"
+
+#: task_manager/templates/users/user_delete.html:9
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/users/forms.py:14
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_."
+
+#: task_manager/users/forms.py:26 task_manager/users/forms.py:52
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: users/templates/users/create.html:44 users/templates/users/update.html:45
-msgid "Password confirmation"
-msgstr "Подтверждение пароля"
+#: task_manager/users/forms.py:27 task_manager/users/forms.py:58
+msgid "Please enter your password again to confirm."
+msgstr "Пожалуйста, введите пароль еще раз."
 
-#: users/templates/users/create.html:47 users/templates/users/update.html:49
-msgid "Enter the same password as before, for verification."
-msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+#: task_manager/users/forms.py:37 task_manager/users/forms.py:76
+#, fuzzy
+#| msgid "Password confirmation"
+msgid "Passwords don't match."
+msgstr "Пароли не совпаладают"
 
-#: users/templates/users/create.html:51
+#: task_manager/users/forms.py:41 task_manager/users/forms.py:80
+#, fuzzy
+#| msgid "Your password must contain at least 3 characters."
+msgid "This password is too short. It must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/users/forms.py:49
+#, fuzzy
+#| msgid "Password"
+msgid "New Password"
+msgstr "Пароль"
+
+#: task_manager/users/forms.py:55
+#, fuzzy
+#| msgid "Password"
+msgid "Confirm Password"
+msgstr "Пароль"
+
+#: task_manager/users/models.py:11
+#, fuzzy
+#| msgid "First name"
+msgid "First Name"
+msgstr "Имя"
+
+#: task_manager/users/models.py:16
+#, fuzzy
+#| msgid "Last name"
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: task_manager/users/views.py:24
+msgid "You must be logged in to access this page."
+msgstr "Вы должны быть авторизованы."
+
+#: task_manager/users/views.py:31
+#, fuzzy
+#| msgid "You do not have permission to change another user."
+msgid "You don't have permission to modify this user."
+msgstr "У вас нет прав изменить другого пользователя."
+
+#: task_manager/users/views.py:46
+msgid "Cannot delete user because they are being used"
+msgstr "Невозможно удалить пользователя, который используется."
+
+#: task_manager/users/views.py:70
+msgid "Submit"
+msgstr "Отправить"
+
+#: task_manager/users/views.py:78
+#, fuzzy
+#| msgid "User was registered successfully"
+msgid "User registered successfully! You can now log in."
+msgstr "Пользователь зарегистрирован."
+
+#: task_manager/users/views.py:83
+msgid "Sign Up"
+msgstr "Зарегистрироваться."
+
+#: task_manager/users/views.py:84
 #, fuzzy
 #| msgid "Registration"
 msgid "Register"
 msgstr "Регистрация"
 
-#: users/templates/users/delete.html:4 users/templates/users/delete.html:9
-msgid "Delete user"
-msgstr "Удалить"
+#: task_manager/users/views.py:98
+#, fuzzy
+#| msgid "User was updated successfully"
+msgid "Profile updated successfully!"
+msgstr "Пользователь изменен."
 
-#: users/templates/users/delete.html:10
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: users/templates/users/delete.html:13
-msgid "Yes, delete"
-msgstr "Да, удалить"
-
-#: users/templates/users/delete.html:14 users/templates/users/update.html:54
-msgid "Cancel"
-msgstr "Отмена"
-
-#: users/templates/users/update.html:4 users/templates/users/update.html:8
-msgid "Edit user"
+#: task_manager/users/views.py:103
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit Profile"
 msgstr "Изменить"
 
-#: users/templates/users/update.html:53
-msgid "Update"
-msgstr "Изменение пользователя"
+#: task_manager/users/views.py:104
+#, fuzzy
+#| msgid "Save changes"
+msgid "Save Changes"
+msgstr "Сохранить"
+
+#: task_manager/users/views.py:113
+#, fuzzy
+#| msgid "User was deleted successfully"
+msgid "Account deleted successfully"
+msgstr "Пользователь удален"
+
+#: task_manager/users/views.py:118
+msgid "Confirm Account Deletion"
+msgstr "Подтвердите удаление"
+
+#: task_manager/users/views.py:119
+msgid "This action cannot be undone."
+msgstr "Это действие нельзя отменить"
+
+#: task_manager/users/views.py:125
+msgid "Incorrect password"
+msgstr "Неверный пароль"
+
+#: task_manager/views.py:15
+msgid "You were logged in"
+msgstr "Вход выполнен"
+
+#: task_manager/views.py:24
+msgid "You were logged out"
+msgstr "Выход выполнен"
+
+#~ msgid "You are not authorized! Please, log in."
+#~ msgstr "Вы не авторизованы. Пожалуйста, войдите в аккаунт."
+
+#~ msgid "Permission denied"
+#~ msgstr "Нет доступа."
+
+#~ msgid "Cannot delete object because it is being used."
+#~ msgstr "Невозможно удалить объект, который используется."
+
+#~ msgid "You don't have rights to change another user."
+#~ msgstr "У вас нет прав изменить другого пользователя."
+
+#~ msgid "Cannot delete this user because they are being used"
+#~ msgstr "Невозможно удалить пользователя, который используется."
+
+#~ msgid "User deletion"
+#~ msgstr "Удаление"
+
+#~ msgid "Yes, delete"
+#~ msgstr "Да, удалить"
+
+#~ msgid "You are not authorized! Please log in."
+#~ msgstr "Вы не авторизованы. Пожалуйста, войдите в аккаунт."
+
+#~ msgid "Task Manager Hexlet"
+#~ msgstr "Менеджер задач Hexlet"
+
+#~ msgid "Statuses"
+#~ msgstr "Статусы"
+
+#~ msgid "Labels"
+#~ msgstr "Метки"
+
+#~ msgid "Tasks"
+#~ msgstr "Задачи"
+
+#~ msgid "Logout"
+#~ msgstr "Выход"
+
+#~ msgid "Login"
+#~ msgstr "Вход"
+
+#~ msgid "Registration"
+#~ msgstr "Регистрация"
+
+#~ msgid "Hello from Hexlet!"
+#~ msgstr "Привет от Хекслета!"
+
+#~ msgid "Practical programming courses"
+#~ msgstr "Практические курсы по программированию"
+
+#~ msgid "Learn more"
+#~ msgstr "Узнать больше"
+
+#~ msgid "Enter the same password as before, for verification."
+#~ msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
+#~ msgid "Update"
+#~ msgstr "Изменение пользователя"

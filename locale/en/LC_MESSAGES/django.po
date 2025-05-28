@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-16 17:06+0300\n"
+"POT-Creation-Date: 2025-05-28 15:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,187 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: task_manager/templates/index.html:8
-msgid "Hello from Hexlet!"
+
+#: task_manager/settings.py:149
+msgid "English"
 msgstr ""
 
-#: task_manager/templates/index.html:9
-msgid "Practical programming courses"
+#: task_manager/settings.py:150
+msgid "Russian"
 msgstr ""
 
-#: task_manager/templates/index.html:11
-msgid "Learn more"
-msgstr ""
-
-#: task_manager/templates/layout.html:8
-msgid "Task Manager Hexlet"
-msgstr ""
-
-#: task_manager/templates/layout.html:15
+#: task_manager/templates/index.html:4
 msgid "Task Manager"
 msgstr ""
 
-#: task_manager/templates/layout.html:22
+#: task_manager/templates/index.html:8
+msgid "Welcome to Task Manager"
+msgstr ""
+
+#: task_manager/templates/index.html:10
+msgid "Task Manager is a simple but powerful system for managing tasks."
+msgstr ""
+
+#: task_manager/templates/index.html:11
+msgid "Create tasks, assign performers and update statuses – all in one place."
+msgstr ""
+
+#: task_manager/templates/login_form.html:4
+#: task_manager/templates/login_form.html:5
+msgid "Log In"
+msgstr ""
+
+#: task_manager/templates/login_form.html:6
+msgid "Enter"
+msgstr ""
+
+#: task_manager/templates/login_form.html:10
+msgid "Don’t have an account?"
+msgstr ""
+
+#: task_manager/templates/login_form.html:11
+msgctxt "button"
+msgid "Sign Up"
+msgstr ""
+
+#: task_manager/templates/users/index.html:4
+#: task_manager/templates/users/index.html:10
 msgid "Users"
 msgstr ""
 
-#: task_manager/templates/layout.html:29
-msgid "Login"
+#: task_manager/templates/users/index.html:18
+msgid "Username"
 msgstr ""
 
-#: task_manager/templates/layout.html:32
-msgid "Registration"
+#: task_manager/templates/users/index.html:19
+msgid "Full name"
+msgstr ""
+
+#: task_manager/templates/users/index.html:20
+msgid "Date created"
+msgstr ""
+
+#: task_manager/templates/users/index.html:34
+msgid "Edit"
+msgstr ""
+
+#: task_manager/templates/users/index.html:37
+msgid "Delete"
+msgstr ""
+
+#: task_manager/templates/users/index.html:48
+msgid "No users found."
+msgstr ""
+
+#: task_manager/templates/users/registration_form.html:12
+msgid "Already have an account?"
+msgstr ""
+
+#: task_manager/templates/users/registration_form.html:14
+msgctxt "button"
+msgid "Log In"
+msgstr ""
+
+#: task_manager/templates/users/user_delete.html:9
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: task_manager/users/forms.py:14
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: task_manager/users/forms.py:26 task_manager/users/forms.py:52
+msgid "Your password must contain at least 3 characters."
+msgstr ""
+
+#: task_manager/users/forms.py:27 task_manager/users/forms.py:58
+msgid "Please enter your password again to confirm."
+msgstr ""
+
+#: task_manager/users/forms.py:37 task_manager/users/forms.py:76
+msgid "Passwords don't match."
+msgstr ""
+
+#: task_manager/users/forms.py:41 task_manager/users/forms.py:80
+msgid "This password is too short. It must contain at least 3 characters."
+msgstr ""
+
+#: task_manager/users/forms.py:49
+msgid "New Password"
+msgstr ""
+
+#: task_manager/users/forms.py:55
+msgid "Confirm Password"
+msgstr ""
+
+#: task_manager/users/models.py:11
+msgid "First Name"
+msgstr ""
+
+#: task_manager/users/models.py:16
+msgid "Last Name"
+msgstr ""
+
+#: task_manager/users/views.py:24
+msgid "You must be logged in to access this page."
+msgstr ""
+
+#: task_manager/users/views.py:31
+msgid "You don't have permission to modify this user."
+msgstr ""
+
+#: task_manager/users/views.py:46
+msgid "Cannot delete user because they are being used"
+msgstr ""
+
+#: task_manager/users/views.py:70
+msgid "Submit"
+msgstr ""
+
+#: task_manager/users/views.py:78
+msgid "User registered successfully! You can now log in."
+msgstr ""
+
+#: task_manager/users/views.py:83
+msgid "Sign Up"
+msgstr ""
+
+#: task_manager/users/views.py:84
+msgid "Register"
+msgstr ""
+
+#: task_manager/users/views.py:98
+msgid "Profile updated successfully!"
+msgstr ""
+
+#: task_manager/users/views.py:103
+msgid "Edit Profile"
+msgstr ""
+
+#: task_manager/users/views.py:104
+msgid "Save Changes"
+msgstr ""
+
+#: task_manager/users/views.py:113
+msgid "Account deleted successfully"
+msgstr ""
+
+#: task_manager/users/views.py:118
+msgid "Confirm Account Deletion"
+msgstr ""
+
+#: task_manager/users/views.py:119
+msgid "This action cannot be undone."
+msgstr ""
+
+#: task_manager/users/views.py:125
+msgid "Incorrect password"
+msgstr ""
+
+#: task_manager/views.py:15
+msgid "You were logged in"
+msgstr ""
+
+#: task_manager/views.py:24
+msgid "You were logged out"
 msgstr ""
