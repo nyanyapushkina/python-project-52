@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
-from task_manager.users.models import User
+
+from .models import User
 
 
 class BaseUserForm:
@@ -38,7 +39,8 @@ class CustomUserCreationForm(UserCreationForm):
             if len(password1) < 3:
                 self.add_error(
                     "password2",
-                    _("This password is too short. It must contain at least 3 characters.")
+                    _("This password is too short. "
+                    "It must contain at least 3 characters.")
                 )
         return cleaned_data
 
