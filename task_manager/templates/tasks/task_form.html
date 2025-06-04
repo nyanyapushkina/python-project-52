@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+  {% if object %}
+    {% trans "Update task" %}
+  {% else %}
+    {% trans "Create task" %}
+  {% endif %}
+{% endblock %}
+
+{% block main_classes %}container wrapper flex-grow-1{% endblock %}
+
+{% block content %}
+  <h1 class="my-4">
+    {% if object %}
+      {% trans "Update task" %}
+    {% else %}
+      {% trans "Create task" %}
+    {% endif %}
+  </h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary" type="submit" 
+           value="{% if object %}{% trans 'Update' %}{% else %}{% trans 'Create' %}{% endif %}">
+  </form>
+{% endblock %}
