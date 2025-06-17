@@ -1,8 +1,16 @@
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import include, path
 from django.views.generic import TemplateView
 
 from task_manager.views import CustomLoginView, CustomLogoutView
+
+
+def trigger_error(request):
+    a = None
+    a.hello()
+    return HttpResponse("Hello, world. You're at the pollapp index.")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,4 +22,5 @@ urlpatterns = [
     path('statuses/', include('task_manager.statuses.urls')),
     path('tasks/', include('task_manager.tasks.urls')),
     path('labels/', include('task_manager.labels.urls')),
+    path('trigger-error/', trigger_error),
 ]
