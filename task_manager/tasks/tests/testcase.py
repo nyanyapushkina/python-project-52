@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
-from task_manager.labels.models import Label
 
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
@@ -47,3 +47,11 @@ class TaskTestCase(TestCase):
             'executor': self.user2.id,
             'labels': [self.label1.id]
         }
+    
+    def assertFilteredTasksCount(self, response, expected_count, msg=None):
+        self.assertEqual(response.status_code, 200, msg)
+        if hasattr(response.context, 'filter'):
+            self.assertEqual(len(response.context['filter'].qs), 
+                             expected_count, msg)
+        else:
+            self.fail("Response context doesn't contain 'filter' object")

@@ -161,6 +161,88 @@ class TestTaskDeleteView(TaskTestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('tasks'))
-        self.assertEqual(Task.objects.count(), initial_count)  # Still 2 tasks
+        self.assertEqual(Task.objects.count(), initial_count)
         unchanged_task = Task.objects.get(id=self.task1.id)
         self.assertEqual(unchanged_task.name, self.task1.name)
+
+
+class TestTaskFilterView(TaskTestCase):
+    def test_filter_by_status(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {'status': self.status2.id}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 1)
+        self.assertEqual(
+            response.context['filter'].qs[0].name,
+            "Defeat the White Witch"
+        )
+
+    def test_filter_by_executor(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {'executor': self.user1.id}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 1)
+        self.assertEqual(
+            response.context['filter'].qs[0].name,
+            "Repair the Lamppost"
+        )
+
+    def test_filter_by_label(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {'labels': self.label2.id}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 1)
+        self.assertEqual(
+            response.context['filter'].qs[0].name,
+            "Repair the Lamppost"
+        )
+
+    def test_filter_self_tasks(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {'self_tasks': 'on'}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 1)
+        self.assertEqual(
+            response.context['filter'].qs[0].name,
+            "Defeat the White Witch"
+        )
+
+    def test_combined_filters(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {
+                'status': self.status1.id,
+                'labels': self.label1.id
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 1)
+        self.assertEqual(
+            response.context['filter'].qs[0].name,
+            "Repair the Lamppost"
+        )
+
+    def test_empty_filter_results(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('tasks'),
+            {
+                'status': self.status1.id,
+                'executor': self.user2.id
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['filter'].qs), 0)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-10 13:39+0000\n"
+"POT-Creation-Date: 2025-06-17 14:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: task_manager/templates/statuses/create.html:15
 #: task_manager/templates/statuses/list.html:23
 #: task_manager/templates/statuses/update.html:15
-#: task_manager/templates/tasks/task_list.html:35
+#: task_manager/templates/tasks/task_list.html:36
 #, fuzzy
 #| msgid "Last name"
 msgid "Name"
@@ -48,6 +48,7 @@ msgstr "Метки"
 #: task_manager/templates/labels/list.html:10
 #: task_manager/templates/labels/update.html:4
 #: task_manager/templates/tasks/task_detail.html:41
+#: task_manager/templates/tasks/task_list.html:40
 msgid "Labels"
 msgstr "Метки"
 
@@ -75,11 +76,11 @@ msgstr "Метка удалена"
 msgid "Cannot delete label because it is in use"
 msgstr "Невозможно удалить объект, который используется."
 
-#: task_manager/settings.py:153
+#: task_manager/settings.py:154
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:154
+#: task_manager/settings.py:155
 msgid "Russian"
 msgstr "Русский"
 
@@ -93,7 +94,7 @@ msgstr "Дата создания"
 
 #: task_manager/statuses/models.py:24 task_manager/tasks/models.py:29
 #: task_manager/templates/tasks/task_detail.html:32
-#: task_manager/templates/tasks/task_list.html:36
+#: task_manager/templates/tasks/task_list.html:37
 #, fuzzy
 #| msgid "Statuses"
 msgid "Status"
@@ -151,13 +152,13 @@ msgstr "Необязательные детали о задаче"
 
 #: task_manager/tasks/models.py:36
 #: task_manager/templates/tasks/task_detail.html:24
-#: task_manager/templates/tasks/task_list.html:37
+#: task_manager/templates/tasks/task_list.html:38
 msgid "Author"
 msgstr "Автор"
 
 #: task_manager/tasks/models.py:43
 #: task_manager/templates/tasks/task_detail.html:28
-#: task_manager/templates/tasks/task_list.html:38
+#: task_manager/templates/tasks/task_list.html:39
 msgid "Executor"
 msgstr "Исполнитель"
 
@@ -167,7 +168,7 @@ msgstr "Выберите исполнителя (необязательно)"
 
 #: task_manager/tasks/models.py:56
 #: task_manager/templates/tasks/task_detail.html:36
-#: task_manager/templates/tasks/task_list.html:39
+#: task_manager/templates/tasks/task_list.html:41
 #, fuzzy
 #| msgid "Create status"
 msgid "Created at"
@@ -181,34 +182,34 @@ msgstr "Задачи"
 
 #: task_manager/tasks/models.py:64
 #: task_manager/templates/includes/navbar.html:19
-#: task_manager/templates/tasks/task_list.html:6
-#: task_manager/templates/tasks/task_list.html:13
+#: task_manager/templates/tasks/task_list.html:5
+#: task_manager/templates/tasks/task_list.html:10
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/views.py:21
+#: task_manager/tasks/views.py:22
 msgid "You are not authorized! Please log in."
 msgstr "Вы не авторизованы. Пожалуйста, войдите в аккаунт."
 
-#: task_manager/tasks/views.py:50
+#: task_manager/tasks/views.py:57
 #, fuzzy
 #| msgid "User was updated successfully"
 msgid "Task created successfully!"
 msgstr "Пользователь изменен."
 
-#: task_manager/tasks/views.py:62
+#: task_manager/tasks/views.py:69
 #, fuzzy
 #| msgid "User was updated successfully"
 msgid "Task updated successfully!"
 msgstr "Пользователь изменен."
 
-#: task_manager/tasks/views.py:69
+#: task_manager/tasks/views.py:76
 #, fuzzy
 #| msgid "User was deleted successfully"
 msgid "Task deleted successfully!"
 msgstr "Пользователь удален"
 
-#: task_manager/tasks/views.py:70
+#: task_manager/tasks/views.py:77
 msgid "Only the author can delete a task!"
 msgstr "Только автор может удалить задачу!"
 
@@ -324,14 +325,14 @@ msgstr "Дата создания"
 #: task_manager/templates/statuses/update.html:29
 #: task_manager/templates/tasks/task_detail.html:54
 #: task_manager/templates/tasks/task_form.html:28
-#: task_manager/templates/tasks/task_list.html:53
+#: task_manager/templates/tasks/task_list.html:60
 msgid "Update"
 msgstr "Изменение пользователя"
 
 #: task_manager/templates/labels/list.html:37
 #: task_manager/templates/statuses/list.html:37
 #: task_manager/templates/tasks/task_detail.html:57
-#: task_manager/templates/tasks/task_list.html:55
+#: task_manager/templates/tasks/task_list.html:62
 #: task_manager/templates/users/index.html:37
 #: venv/lib/python3.13/site-packages/django/forms/formsets.py:499
 #, fuzzy
@@ -426,7 +427,7 @@ msgstr "Изменение пользователя"
 
 #: task_manager/templates/tasks/task_form.html:9
 #: task_manager/templates/tasks/task_form.html:20
-#: task_manager/templates/tasks/task_list.html:17
+#: task_manager/templates/tasks/task_list.html:13
 #, fuzzy
 #| msgid "Create status"
 msgid "Create task"
@@ -435,6 +436,16 @@ msgstr "Создать статус"
 #: task_manager/templates/tasks/task_list.html:25
 msgid "Show"
 msgstr ""
+
+#: task_manager/templates/tasks/task_list.html:26
+msgid "Reset"
+msgstr ""
+
+#: task_manager/templates/tasks/task_list.html:67
+#, fuzzy
+#| msgid "No users found."
+msgid "No tasks found"
+msgstr "Пользователи не найдены."
 
 #: task_manager/templates/users/index.html:18
 msgid "Username"
@@ -1268,16 +1279,16 @@ msgstr ""
 
 #: venv/lib/python3.13/site-packages/django/forms/widgets.py:867
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: venv/lib/python3.13/site-packages/django/forms/widgets.py:868
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #. Translators: Please do not add spaces around commas.
 #: venv/lib/python3.13/site-packages/django/template/defaultfilters.py:873
 msgid "yes,no,maybe"
-msgstr ""
+msgstr "да,нет,возможно"
 
 #: venv/lib/python3.13/site-packages/django/template/defaultfilters.py:903
 #: venv/lib/python3.13/site-packages/django/template/defaultfilters.py:920

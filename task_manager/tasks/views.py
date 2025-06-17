@@ -12,6 +12,7 @@ from django.views.generic import (
     UpdateView,
 )
 
+from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 
@@ -31,10 +32,16 @@ class TaskListView(TaskAccessMixin, ListView):
     model = Task
     template_name = 'tasks/task_list.html'
     context_object_name = 'tasks'
-    ordering = ['-created_at']
+    filterset_class = TaskFilter
 
     def get_queryset(self):
-        return Task.objects.select_related('author', 'executor', 'status')
+        queryset = super().get_queryset()
+        return queryset.order_by('-created_at')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset
+        return context
 
 
 class TaskDetailView(TaskAccessMixin, DetailView):
