@@ -9,6 +9,7 @@ coverage.xml
 .pytest_cache/
 .python-version
 .env
+**/.DS_Store
 *_cache/
 staticfiles/
 *.sqlite3
