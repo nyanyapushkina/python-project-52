@@ -11,7 +11,7 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
     """Custom login view with success message."""
     template_name = 'login_form.html'
     form_class = CustomLoginForm
-    next_page = reverse_lazy('index')
+    next_page = '/'
     success_message = _('You were logged in')
 
 
