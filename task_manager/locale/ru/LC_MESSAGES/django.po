@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 19:37+0300\n"
+"POT-Creation-Date: 2025-06-20 20:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,9 +221,9 @@ msgid ""
 "Task Manager is a simple but powerful system for managing tasks. Create "
 "tasks, assign performers and update statuses – all in one place."
 msgstr ""
-"Менеджер задач — это простая, но мощная система для управления задачами."
-"Создавайте задачи, назначайте исполнителей и обновляйте статусы — всё в "
-"одном месте."
+"Менеджер задач — это простая, но мощная система для управления "
+"задачами.Создавайте задачи, назначайте исполнителей и обновляйте статусы — "
+"всё в одном месте."
 
 #: task_manager/templates/labels/create.html:9
 #: task_manager/templates/labels/index.html:13
@@ -386,8 +386,9 @@ msgid "Update task"
 msgstr "Изменить задачу"
 
 #: task_manager/templates/users/delete.html:10
-#, python-format
-msgid "Are you sure you want to delete %(full_name)"
+#, fuzzy, python-format
+#| msgid "Are you sure you want to delete %(full_name)"
+msgid "Are you sure you want to delete %(full_name)s?"
 msgstr "Вы уверены, что хотите удалить %(full_name)"
 
 #: task_manager/templates/users/delete.html:16
@@ -454,7 +455,8 @@ msgstr "Новый пароль"
 
 #: task_manager/users/forms.py:58
 msgid "Minimum 3 characters. Leave empty to keep current password."
-msgstr "Минимум 3 символа. Оставьте пустым, если хотите сохранить текущий пароль."
+msgstr ""
+"Минимум 3 символа. Оставьте пустым, если хотите сохранить текущий пароль."
 
 #: task_manager/users/forms.py:62
 msgid "Confirm Password"
