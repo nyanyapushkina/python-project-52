@@ -24,7 +24,13 @@
     </header>
 
     <div class="container mt-3">
-      {% bootstrap_messages %}
+      {% if messages %}
+        <div class="alert alert-success">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
     <main class="{% block main_classes %}container flex-grow-1 d-flex align-items-center justify-content-center py-5{% endblock %}">
