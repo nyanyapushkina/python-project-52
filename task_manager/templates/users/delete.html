@@ -1,0 +1,23 @@
+{% extends "includes/base_form.html" %}
+{% load i18n %}
+
+{% block form_title %}{{ title }}{% endblock %}
+{% block form_heading %}{{ title }}{% endblock %}
+
+{% block extra_fields %}
+  <div class="text-center mb-4">
+    <p class="fs-5 text-light">
+      {% blocktrans trimmed with full_name=user.get_full_name %}
+        Are you sure you want to delete {{ full_name }}?
+      {% endblocktrans %}
+    </p>
+    {% if user.tasks.all %}
+      <div class="alert alert-warning mt-3">
+        {% trans "This user has active tasks!" %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block button_classes %}btn btn-outline-danger w-100 py-2{% endblock %}
+{% block form_button %}{{ button_name }}{% endblock %}

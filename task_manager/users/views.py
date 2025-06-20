@@ -108,7 +108,7 @@ class UserUpdateView(CustomLoginRequiredMixin, UserPermissionMixin, BaseUserView
 
 
 class UserDeleteView(CustomLoginRequiredMixin, UserPermissionMixin, ProtectErrorMixin, BaseUserView, DeleteView):
-    template_name = 'users/user_delete.html'
+    template_name = 'users/delete.html'
     success_url = reverse_lazy('users:index')
     success_message = _('Account deleted successfully')
 
