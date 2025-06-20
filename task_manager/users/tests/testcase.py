@@ -4,28 +4,32 @@ from task_manager.users.models import User
 
 
 class UserTestCase(TestCase):
-    fixtures = ['test_users.json']
+    """
+    Base test case for user-related tests.
+    Loads initial users from fixtures and provides common test data.
+    """
+    fixtures = ['task_manager/fixtures/test_users.json']
 
     def setUp(self):
         self.client = Client()
 
-        self.user1 = User.objects.get(id=1)
-        self.user2 = User.objects.get(id=2)
+        self.user1 = User.objects.get(username='queen_lucy')
+        self.user2 = User.objects.get(username='king_edmund')
 
-        self.user_count = User.objects.count()
+        self.initial_user_count = User.objects.count()
 
         self.valid_user_data = {
             'first_name': 'Lucy',
             'last_name': 'Pevensie',
-            'username': 'queen_lucy',
-            'password1': 'Valiant123',
-            'password2': 'Valiant123'
+            'username': 'new_queen',
+            'password1': 'Valiant123!',  # NOSONAR
+            'password2': 'Valiant123!'   # NOSONAR
         }
 
         self.update_user_data = {
             'first_name': 'Peter',
             'last_name': 'Pevensie',
             'username': 'high_king',
-            'password1': 'Magnificent456',
-            'password2': 'Magnificent456'
+            'password1': 'Magnificent456!',  # NOSONAR
+            'password2': 'Magnificent456!'   # NOSONAR
         }

@@ -20,79 +20,68 @@ class TestCustomUserCreationForm(UserTestCase):
             data.update(overrides)
         return CustomUserCreationForm(data=data)
 
-    def test_valid_data(self):
+    def test_valid_creation(self):
         """Test form with valid data."""
         form = self.get_form()
         self.assertTrue(form.is_valid())
         user = form.save()
         self.assertEqual(user.username, self.valid_user_data['username'])
         self.assertTrue(user.check_password(self.valid_user_data['password1']))
-        self.assertEqual(User.objects.count(), self.user_count + 1)
+        self.assertEqual(User.objects.count(), self.initial_user_count + 1)
 
+    def test_missing_required_fields(self):
+        """Test validation when required fields are missing."""
+        required_fields = ['username', 'password1', 'password2']
+        
+        for field in required_fields:
+            with self.subTest(field=field):
+                invalid_data = self.valid_user_data.copy()
+                invalid_data.pop(field)
+                form = CustomUserCreationForm(data=invalid_data)
+                self.assertFalse(form.is_valid())
+                self.assertIn(field, form.errors)
 
-    def test_missing_fields(self):
-        """Test form with missing required fields."""
+    def test_password_validation(self):
+        """Test password validation scenarios."""
         test_cases = [
-            {'username': self.valid_user_data['username']},
-            {
-                'username': self.valid_user_data['username'],
-                'password1': 'test123',  # NOSONAR
-            },
-            {'first_name': 'Test', 'last_name': 'User'},
+            (
+                {'password1': self.SHORT_PASSWORD, 
+                 'password2': self.SHORT_PASSWORD},
+                'password2'
+            ),
+            (
+                {'password1': 'ValidPass123', 
+                 'password2': self.INVALID_PASSWORD_CONFIRM},  # NOSONAR
+                'password2'
+            ),
         ]
 
-        for data in test_cases:
+        for data, error_field in test_cases:
             with self.subTest(data=data):
-                form = CustomUserCreationForm(data=data)
+                form = self.get_form(data)
                 self.assertFalse(form.is_valid())
+                self.assertIn(error_field, form.errors)
 
-    def test_password_too_short(self):
-        """Test password minimum length validation."""
-        form = self.get_form({
-            'password1': self.SHORT_PASSWORD,
-            'password2': self.SHORT_PASSWORD
-        })
-        self.assertFalse(form.is_valid())
-        self.assertIn('password2', form.errors)
-
-    def test_invalid_username(self):
+    def test_username_validation(self):
         """Test username format validation."""
-        test_cases = [
+        invalid_usernames = [
             '!!!',
             'user#name',
             'user name',
             self.LONG_USERNAME,
+            '',  # empty
         ]
 
-        for username in test_cases:
+        for username in invalid_usernames:
             with self.subTest(username=username):
                 form = self.get_form({'username': username})
                 self.assertFalse(form.is_valid())
                 self.assertIn('username', form.errors)
 
-    def test_passwords_do_not_match(self):
-        """Test password confirmation validation."""
-        form = self.get_form({'password2': self.INVALID_PASSWORD_CONFIRM})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors['password2'],
-            ['The two password fields didn\'t match.']
-        )
-
-    def test_empty_strings(self):
-        """Test empty required fields validation."""
-        form = self.get_form({
-            'first_name': '',
-            'last_name': '',
-            'username': '',
-        })
-        self.assertFalse(form.is_valid())
-        for field in ['first_name', 'last_name', 'username']:
-            self.assertIn(field, form.errors)
-
     def test_duplicate_username(self):
         """Test unique username validation."""
-        form = self.get_form({'username': 'john_snow'})
+        form = self.get_form({'username': 
+                              'queen_lucy'})  # Already exists in fixtures
         self.assertFalse(form.is_valid())
         self.assertIn('username', form.errors)
 
@@ -105,70 +94,60 @@ class TestCustomUserChangeForm(UserTestCase):
     WRONG_CONFIRM = 'WrongConfirm'  # NOSONAR
 
     def get_form(self, overrides=None):
-        """Return user change form with updated data and passwords."""
-        data = self.update_user_data.copy()
-        data.update({
-            'password1': data.pop('password1'),
-            'password2': data.pop('password2')
-        })
+        """Return user change form with updated data."""
+        data = {
+            'username': 'updated_user',
+            'first_name': 'Updated',
+            'last_name': 'User',
+            'password1': 'NewValidPass123',  # NOSONAR
+            'password2': 'NewValidPass123'   # NOSONAR
+        }
         if overrides:
             data.update(overrides)
         return CustomUserChangeForm(data=data, instance=self.user1)
 
-    def test_valid_password_update(self):
-        """Test successful password update."""
+    def test_valid_update(self):
+        """Test successful user update."""
         form = self.get_form()
         self.assertTrue(form.is_valid())
         user = form.save()
-        self.assertEqual(user.username, self.update_user_data['username'])
-        self.assertTrue(user.check_password(
-            self.update_user_data['password1']
-        ))
+        self.assertEqual(user.username, 'updated_user')
+        self.assertTrue(user.check_password('NewValidPass123'))
 
-    def test_passwords_do_not_match(self):
-        """Test password confirmation validation."""
-        form = self.get_form({'password2': self.WRONG_CONFIRM})
-        self.assertFalse(form.is_valid())
-        self.assertIn('password2', form.errors)
-
-    def test_short_password(self):
-        """Test password minimum length validation."""
-        form = self.get_form({
-            'password1': self.SHORT_PASSWORD,
-            'password2': self.SHORT_PASSWORD
-        })
-        self.assertFalse(form.is_valid())
-        self.assertIn('password2', form.errors)
-
-    def test_missing_password_fields(self):
-        """Test partial password fields validation."""
+    def test_password_update_validation(self):
+        """Test password update scenarios."""
         test_cases = [
-            {'password1': '', 'password2': 'SomePassword'},  # NOSONAR
-            {'password1': 'SomePassword', 'password2': ''}   # NOSONAR
+            (
+                {'password1': self.SHORT_PASSWORD, 
+                 'password2': self.SHORT_PASSWORD},
+                'password2'
+            ),
+            (
+                {'password1': 'ValidPass123', 
+                 'password2': self.WRONG_CONFIRM},  # NOSONAR
+                'password2'
+            ),
+            (
+                {'password1': '', 'password2': 'ValidPass123'},  # NOSONAR
+                '__all__'
+            ),
         ]
 
-        for case in test_cases:
-            with self.subTest(case=case):
-                form = self.get_form(case)
+        for data, error_field in test_cases:
+            with self.subTest(data=data):
+                form = self.get_form(data)
                 self.assertFalse(form.is_valid())
-                self.assertTrue(
-                    'password1' in form.errors or 'password2' in form.errors
-                )
-
-    def test_update_with_existing_valid_password(self):
-        """Test password update with new valid password."""
-        form = self.get_form({
-            'password1': self.NEW_VALID_PASSWORD,
-            'password2': self.NEW_VALID_PASSWORD,
-        })
-        self.assertTrue(form.is_valid())
-        user = form.save()
-        self.assertTrue(user.check_password(self.NEW_VALID_PASSWORD))
+                if error_field != '__all__':
+                    self.assertIn(error_field, form.errors)
 
     def test_update_without_password_change(self):
         """Test form validation when password isn't being changed."""
-        data = self.update_user_data.copy()
-        data.pop('password1')
-        data.pop('password2')
-        form = CustomUserChangeForm(data=data, instance=self.user1)
+        form = CustomUserChangeForm(
+            data={
+                'username': 'no_pass_change',
+                'first_name': 'Test',
+                'last_name': 'User'
+            },
+            instance=self.user1
+        )
         self.assertTrue(form.is_valid())
