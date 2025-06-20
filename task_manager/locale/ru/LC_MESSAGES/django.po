@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 19:12+0300\n"
+"POT-Creation-Date: 2025-06-20 19:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,8 +242,9 @@ msgid "Log In"
 msgstr "Вход"
 
 #: task_manager/templates/includes/navbar.html:41
+#: task_manager/users/views.py:83
 msgid "Sign Up"
-msgstr "Регистрация."
+msgstr "Регистрация"
 
 #: task_manager/templates/index.html:9
 #, fuzzy
@@ -582,29 +583,29 @@ msgstr "Невозможно удалить пользователя, котор
 msgid "Registration successful!"
 msgstr "Пользователь изменен."
 
-#: task_manager/users/views.py:83
+#: task_manager/users/views.py:84
 #, fuzzy
 #| msgid "Registration"
 msgid "Register"
 msgstr "Регистрация"
 
-#: task_manager/users/views.py:98
+#: task_manager/users/views.py:99
 #, fuzzy
 #| msgid "User was updated successfully"
 msgid "Profile updated!"
 msgstr "Пользователь изменен."
 
-#: task_manager/users/views.py:102
+#: task_manager/users/views.py:103
 msgid "Save"
 msgstr ""
 
-#: task_manager/users/views.py:113
+#: task_manager/users/views.py:114
 #, fuzzy
 #| msgid "User was deleted successfully"
 msgid "Account deleted"
 msgstr "Пользователь удален"
 
-#: task_manager/users/views.py:117
+#: task_manager/users/views.py:118
 msgid "Incorrect password"
 msgstr "Неверный пароль"
 
