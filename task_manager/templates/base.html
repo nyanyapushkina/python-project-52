@@ -1,5 +1,10 @@
-{% load i18n static django_bootstrap5 %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 {% get_current_language as LANGUAGE_CODE %}
+
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -24,13 +29,7 @@
     </header>
 
     <div class="container mt-3">
-      {% if messages %}
-        <div class="alert alert-success">
-          {% for message in messages %}
-            {{ message }}
-          {% endfor %}
-        </div>
-      {% endif %}
+      {% bootstrap_messages %}
     </div>
 
     <main class="{% block main_classes %}container flex-grow-1 d-flex align-items-center justify-content-center py-5{% endblock %}">
@@ -41,6 +40,5 @@
       {% include "includes/footer.html" %}
     </footer>
 
-    {% bootstrap_javascript %}
   </body>
 </html>
