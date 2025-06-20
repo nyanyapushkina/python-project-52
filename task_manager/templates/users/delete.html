@@ -8,7 +8,7 @@
   <div class="text-center mb-4">
     <p class="fs-5 text-light">
       {% blocktrans trimmed with full_name=user.get_full_name %}
-        Are you sure you want to delete {{ full_name }}?
+      Are you sure you want to delete {{ full_name }}?
       {% endblocktrans %}
     </p>
     {% if user.tasks.all %}
