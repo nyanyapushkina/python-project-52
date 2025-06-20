@@ -4,9 +4,8 @@
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="{% url 'index' %}">{% trans "Task Manager" %}</a>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+    <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     
@@ -27,32 +26,32 @@
             <a class="nav-link" href="{% url 'tasks:index' %}">{% trans "Tasks" %}</a>
           </li>
           <li class="nav-item">
-            <form action="{% url 'logout' %}" method="post" class="d-inline">
+            <form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
-              <button type="submit" class="nav-link btn btn-link px-2">
+              <button type="submit" class="nav-link btn btn-link p-0 border-0">
                 {% trans "Log Out" %}
               </button>
             </form>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" context "menu_item" %}</a>
+            <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" context "menu_item" %}</a>
+            <a class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
           </li>
         {% endif %}
       </ul>
       
-      <form action="{% url 'set_language' %}" method="post" class="d-flex ms-auto">
+      <form action="{% url 'set_language' %}" method="post">
         {% csrf_token %}
-        <div class="btn-group" role="group">
+        <div class="btn-group">
           <button type="submit" name="language" value="ru"
-                  class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'ru' %}active fw-bold{% endif %}">
+                  class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">
             RU
           </button>
           <button type="submit" name="language" value="en"
-                  class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'en' %}active fw-bold{% endif %}">
+                  class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
             EN
           </button>
         </div>
