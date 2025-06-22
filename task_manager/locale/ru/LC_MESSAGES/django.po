@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 17:42+0300\n"
+"POT-Creation-Date: 2025-06-22 18:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr ""
 msgid "Cannot delete label because it is in use"
 msgstr ""
 
-#: task_manager/settings.py:154
+#: task_manager/settings.py:144
 msgid "English"
 msgstr ""
 
-#: task_manager/settings.py:155
+#: task_manager/settings.py:145
 msgid "Russian"
 msgstr ""
 
@@ -399,40 +399,52 @@ msgctxt "button"
 msgid "Log In"
 msgstr ""
 
-#: task_manager/users/forms.py:15
-msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr ""
-
-#: task_manager/users/forms.py:27 task_manager/users/forms.py:54
-msgid "Your password must contain at least 3 characters."
-msgstr ""
-
-#: task_manager/users/forms.py:28 task_manager/users/forms.py:60
-msgid "Please enter your password again to confirm."
-msgstr ""
-
-#: task_manager/users/forms.py:38 task_manager/users/forms.py:78
-msgid "Passwords don't match."
-msgstr ""
-
-#: task_manager/users/forms.py:42 task_manager/users/forms.py:82
-msgid "This password is too short. It must contain at least 3 characters."
-msgstr ""
-
-#: task_manager/users/forms.py:51
-msgid "New Password"
-msgstr ""
-
-#: task_manager/users/forms.py:57
-msgid "Confirm Password"
-msgstr ""
-
-#: task_manager/users/models.py:11
+#: task_manager/users/forms.py:15 task_manager/users/models.py:11
 msgid "First Name"
 msgstr ""
 
-#: task_manager/users/models.py:16
+#: task_manager/users/forms.py:16 task_manager/users/models.py:16
 msgid "Last Name"
+msgstr ""
+
+#: task_manager/users/forms.py:20
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: task_manager/users/forms.py:32
+msgid "Minimum 3 characters."
+msgstr ""
+
+#: task_manager/users/forms.py:33 task_manager/users/forms.py:71
+msgid "Enter the same password for verification."
+msgstr ""
+
+#: task_manager/users/forms.py:39
+msgid "This username is already taken."
+msgstr ""
+
+#: task_manager/users/forms.py:48 task_manager/users/forms.py:89
+msgid "Passwords don't match."
+msgstr ""
+
+#: task_manager/users/forms.py:52
+msgid "This password is too short. It must contain at least 3 characters."
+msgstr ""
+
+#: task_manager/users/forms.py:61
+msgid "New Password"
+msgstr ""
+
+#: task_manager/users/forms.py:64
+msgid "Minimum 3 characters. Leave empty to keep current password."
+msgstr ""
+
+#: task_manager/users/forms.py:68
+msgid "Confirm Password"
+msgstr ""
+
+#: task_manager/users/forms.py:92
+msgid "Password too short (min 3 characters)."
 msgstr ""
 
 #: task_manager/users/views.py:24
