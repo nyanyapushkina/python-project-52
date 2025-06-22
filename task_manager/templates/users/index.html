@@ -29,11 +29,15 @@
                 <td>{{ user.get_full_name }}</td>
                 <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
                 <td class="text-center">
-                  <div class="d-inline-flex flex-wrap justify-content-center gap-2">
-                    <a href="{% url 'users:update' user.id %}" class="btn btn-sm btn-outline-light">
+                  <div class="d-inline-flex gap-2">
+                    <a href="{% url 'users:update' user.id %}" 
+                       class="btn btn-sm btn-outline-light"
+                       aria-label="{% trans 'Edit' %}">
                       {% trans "Edit" %}
                     </a>
-                    <a href="{% url 'users:delete' user.id %}" class="btn btn-sm btn-outline-danger">
+                    <a href="{% url 'users:delete' user.id %}" 
+                       class="btn btn-sm btn-outline-danger"
+                       aria-label="{% trans 'Delete' %}">
                       {% trans "Delete" %}
                     </a>
                   </div>
