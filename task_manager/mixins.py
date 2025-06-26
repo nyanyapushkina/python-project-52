@@ -39,7 +39,8 @@ class FormStyleMixin:
         for field_name, field in self.fields.items():
             attrs = {
                 'placeholder': field.label,
-                **self.FIELD_CONFIGS.get(field_name, {'class': self.BASE_INPUT_CLASS})
+                **self.FIELD_CONFIGS.get(field_name, 
+                                         {'class': self.BASE_INPUT_CLASS})
             }
             field.widget.attrs.update(attrs)
 

@@ -1,48 +1,57 @@
-from pyexpat.errors import messages
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.labels.forms import LabelForm
+from task_manager.labels.forms import LabelCreationForm
 from task_manager.labels.models import Label
+from task_manager.mixins import CustomLoginRequiredMixin, ProtectErrorMixin
 
 
-class LabelListView(LoginRequiredMixin, ListView):
+class LabelBaseView(CustomLoginRequiredMixin):
+    """Base view for label operations."""
     model = Label
-    template_name = 'labels/list.html'
+    success_url = reverse_lazy("labels:index")
+
+
+class LabelListView(LabelBaseView, ListView):
+    """Display list of all labels."""
+    template_name = 'labels/index.html'
     context_object_name = 'labels'
+    ordering = ['id']
 
 
-class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = Label
-    form_class = LabelForm
-    template_name = 'labels/create.html'
-    success_url = reverse_lazy('labels:list')
-    success_message = _('Label successfully created')
+class LabelFormMixin(SuccessMessageMixin):
+    """Shared form configuration for create/update views."""
+    template_name = 'labels/form.html'
+    form_class = LabelCreationForm
 
 
-class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = Label
-    form_class = LabelForm
-    template_name = 'labels/update.html'
-    success_url = reverse_lazy('labels:list')
-    success_message = _('Label successfully updated')
+class LabelCreateView(LabelBaseView, LabelFormMixin, CreateView):
+    """Create new label."""
+    success_message = _('Label created successfully')
+    extra_context = {
+        'title': _('Create label'),
+        'button_name': _('Create')
+    }
 
 
-class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    model = Label
+class LabelUpdateView(LabelBaseView, LabelFormMixin, UpdateView):
+    """Update existing label."""
+    success_message = _('Label updated successfully')
+    extra_context = {
+        'title': _('Update label'),
+        'button_name': _('Update')
+    }
+
+
+class LabelDeleteView(LabelBaseView, ProtectErrorMixin, DeleteView):
+    """Delete label with protection check."""
     template_name = 'labels/delete.html'
-    success_url = reverse_lazy('labels:list')
-    success_message = _('Label successfully deleted')
-    protected_message = _('Cannot delete label because it is in use')
-
-    def dispatch(self, request, *args, **kwargs):
-        label = self.get_object()
-        if label.task_set.exists():
-            messages.error(request, self.protected_message)
-            return redirect(self.success_url)
-        return super().dispatch(request, *args, **kwargs)
+    success_message = _('Label deleted successfully')
+    protected_object_url = reverse_lazy('labels:index')
+    protected_object_message = _('Cannot delete label in use')
+    extra_context = {
+        'title': _('Delete label'),
+        'button_name': _('Delete')
+    }
