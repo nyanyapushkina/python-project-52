@@ -7,53 +7,47 @@ from task_manager.users.models import User
 
 
 class Task(models.Model):
+    """Task model representing work items with status, executor and labels."""
     name = models.CharField(
         max_length=255,
         blank=False,
-        unique=True,
         verbose_name=_('Name'),
-        help_text=_('Required. Max 255 characters.'),
+        unique=True,
         error_messages={
-            'unique': _('This task already exists. '
-            'Select another name and try again.'),
+            'unique': _('Task with this name already exists'),
         }
     )
     description = models.TextField(
-        blank=True,
         verbose_name=_('Description'),
-        help_text=_('Optional task details.')
+        blank=True,
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        verbose_name=_('Author'),
+        related_name='author',
     )
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
         verbose_name=_('Status'),
-        related_name='tasks'
-    )
-    author = models.ForeignKey(
-        User,
-        on_delete=models.PROTECT,
-        related_name='authored_tasks',
-        verbose_name=_('Author'),
-        editable=False
     )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='assigned_tasks',
         verbose_name=_('Executor'),
+        related_name='executor',
         blank=True,
         null=True,
-        help_text=_('Select task executor (optional)')
     )
     labels = models.ManyToManyField(
         Label,
-        blank=True,
         verbose_name=_('Labels'),
-        related_name='tasks'
+        blank=True,
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_('Created at')
+        verbose_name=_('Created at'),
     )
 
     def __str__(self):
