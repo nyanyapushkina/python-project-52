@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Statuses" %}{% endblock %}
+{% block main_classes %}container py-5{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="mb-0">{% trans "Statuses" %}</h1>
+      <a href="{% url 'statuses:create' %}" class="btn btn-outline-success">
+        {% trans "Create status" %}
+      </a>
+    </div>
+
+    {% if statuses %}
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-borderless mb-0">
+        <thead>
+          <tr>
+            <th scope="col" class="w-1">ID</th>
+            <th scope="col">{% trans "Name" %}</th>
+            <th scope="col" class="text-end w-1">{% trans "Date created" %}</th>
+            <th scope="col" class="text-center w-1">{% trans "Actions" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for status in statuses %}
+          <tr>
+            <td>{{ status.id }}</td>
+            <td>{{ status.name }}</td>
+            <td class="text-end">{{ status.created_at|date:"d.m.Y H:i" }}</td>
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" role="group">
+                <a href="{% url 'statuses:update' status.id %}" class="btn btn-outline-light">
+                  {% trans "Edit" %}
+                </a>
+                <a href="{% url 'statuses:delete' status.id %}" class="btn btn-outline-danger">
+                  {% trans "Delete" %}
+                </a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+      {% trans "No statuses found." %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

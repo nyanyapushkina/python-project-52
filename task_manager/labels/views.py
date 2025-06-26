@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.labels.forms import LabelCreationForm
+from task_manager.labels.forms import LabelForm
 from task_manager.labels.models import Label
 from task_manager.mixins import CustomLoginRequiredMixin, ProtectErrorMixin
 
@@ -24,7 +24,7 @@ class LabelListView(LabelBaseView, ListView):
 class LabelFormMixin(SuccessMessageMixin):
     """Shared form configuration for create/update views."""
     template_name = 'labels/form.html'
-    form_class = LabelCreationForm
+    form_class = LabelForm
 
 
 class LabelCreateView(LabelBaseView, LabelFormMixin, CreateView):
