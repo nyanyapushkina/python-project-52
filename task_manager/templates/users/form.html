@@ -6,7 +6,7 @@
 {% block form_button %}{{ button_name }}{% endblock %}
 
 {% block bottom_text %}
-  {% with is_create_view=request.resolver_match.url_name == 'сreate' %}
+  {% with is_create_view=request.resolver_match.url_name == 'user_сreate' %}
     {% if is_create_view %}
     <div class="text-center mt-4">
       <small class="text-light text-opacity-50">
