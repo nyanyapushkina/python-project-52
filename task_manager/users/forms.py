@@ -22,8 +22,8 @@ class BaseUserForm:
 
 
 class UserFormPasswordMixin:
-    """Mixin for password validation logic."""
-    def validate_passwords(self, cleaned_data):
+    """Mixin for custom password validation logic."""
+    def custom_validate_passwords(self, cleaned_data):
         """Validate password length and equality."""
         password1 = cleaned_data.get("password1")
         password2 = cleaned_data.get("password2")
@@ -64,7 +64,7 @@ class CustomUserCreationForm(FormStyleMixin,
     def clean(self):
         """Validate password length and equality."""
         cleaned_data = super().clean()
-        return self.validate_passwords(cleaned_data)
+        return self.custom_validate_passwords(cleaned_data)
 
 
 class CustomUserChangeForm(FormStyleMixin, 
@@ -98,7 +98,7 @@ class CustomUserChangeForm(FormStyleMixin,
     def clean(self):
         """Validate password length and equality."""
         cleaned_data = super().clean()
-        return self.validate_passwords(cleaned_data)
+        return self.custom_validate_passwords(cleaned_data)
 
     def save(self, commit=True):
         """Save updated user with new password if provided."""
