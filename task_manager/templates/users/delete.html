@@ -6,8 +6,7 @@
 
 {% block extra_fields %}
   <p class="text-center fs-5">
-    {% trans 'Are you sure you want to delete' %} 
-    {% filter force_escape %}{{ user.first_name }} {{ user.last_name }}{% endfilter %}?
+    {% trans "Are you sure you want to delete" %} {{ user.get_full_name }}?
   </p>
 {% endblock %}
 

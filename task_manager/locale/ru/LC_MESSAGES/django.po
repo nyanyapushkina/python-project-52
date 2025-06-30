@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-26 14:39+0300\n"
+"POT-Creation-Date: 2025-06-30 17:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,8 +94,7 @@ msgstr "Удалить метку"
 #: task_manager/templates/statuses/index.html:40
 #: task_manager/templates/tasks/detail.html:56
 #: task_manager/templates/tasks/index.html:65
-#: task_manager/templates/users/index.html:40
-#: task_manager/templates/users/index.html:41
+#: task_manager/templates/users/index.html:37
 msgid "Delete"
 msgstr "Удалить"
 
@@ -186,7 +185,7 @@ msgid "Status deletion"
 msgstr "Удаление пользователя"
 
 #: task_manager/statuses/views.py:54 task_manager/tasks/views.py:70
-#: task_manager/users/views.py:41
+#: task_manager/users/views.py:80
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
@@ -274,7 +273,7 @@ msgstr "Менеджер задач"
 
 #: task_manager/templates/includes/navbar.html:14
 #: task_manager/templates/users/index.html:4
-#: task_manager/templates/users/index.html:10 task_manager/users/views.py:35
+#: task_manager/templates/users/index.html:10
 msgid "Users"
 msgstr "Пользователи"
 
@@ -334,6 +333,7 @@ msgstr "Дата создания"
 #: task_manager/templates/labels/index.html:25
 #: task_manager/templates/statuses/index.html:25
 #: task_manager/templates/tasks/index.html:43
+#: task_manager/templates/users/index.html:21
 msgid "Actions"
 msgstr "Действия"
 
@@ -341,8 +341,7 @@ msgstr "Действия"
 #: task_manager/templates/statuses/index.html:37
 #: task_manager/templates/tasks/detail.html:53
 #: task_manager/templates/tasks/index.html:62
-#: task_manager/templates/users/index.html:35
-#: task_manager/templates/users/index.html:36
+#: task_manager/templates/users/index.html:34
 msgid "Edit"
 msgstr "Изменить"
 
@@ -401,6 +400,15 @@ msgstr "Показать результат"
 msgid "No tasks found."
 msgstr "Задачи не найдены"
 
+#: task_manager/templates/users/form.html:13
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: task_manager/templates/users/form.html:15
+msgctxt "button"
+msgid "Log In"
+msgstr "Вход"
+
 #: task_manager/templates/users/index.html:18
 msgid "Username"
 msgstr "Имя пользователя"
@@ -409,109 +417,88 @@ msgstr "Имя пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users/index.html:52
+#: task_manager/templates/users/index.html:47
 msgid "No users found."
 msgstr "Пользователи не найдены."
 
-#: task_manager/templates/users/registration_form.html:12
-msgid "Already have an account?"
-msgstr "Уже есть аккаунт?"
-
-#: task_manager/templates/users/registration_form.html:14
-msgctxt "button"
-msgid "Log In"
-msgstr "Вход"
-
-#: task_manager/users/forms.py:15 task_manager/users/models.py:14
-msgid "First Name"
-msgstr "Имя"
-
-#: task_manager/users/forms.py:16 task_manager/users/models.py:20
-msgid "Last Name"
-msgstr "Фамилия"
-
-#: task_manager/users/forms.py:20
+#: task_manager/users/forms.py:18
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./+/-/_."
 
-#: task_manager/users/forms.py:32
-msgid "Minimum 3 characters."
-msgstr "Минимум 3 символа."
-
-#: task_manager/users/forms.py:33 task_manager/users/forms.py:71
-msgid "Enter the same password for verification."
-msgstr "Введите тот же пароль для подтверждения."
-
-#: task_manager/users/forms.py:39
-msgid "This username is already taken."
-msgstr "Это имя пользователя уже занято."
-
-#: task_manager/users/forms.py:48 task_manager/users/forms.py:89
+#: task_manager/users/forms.py:35
 msgid "Passwords don't match."
 msgstr "Пароли не совпадают."
 
-#: task_manager/users/forms.py:52
-msgid "This password is too short. It must contain at least 3 characters."
+#: task_manager/users/forms.py:41
+#, fuzzy
+#| msgid "This password is too short. It must contain at least 3 characters."
+msgid "This password is too short. It must contain at least "
 msgstr "Этот пароль слишком короткий. Он должен содержать минимум 3 символа."
 
-#: task_manager/users/forms.py:61
+#: task_manager/users/forms.py:58 task_manager/users/forms.py:79
+#, fuzzy
+#| msgid "This password is too short. It must contain at least 3 characters."
+msgid "Your password must contain at least "
+msgstr "Этот пароль слишком короткий. Он должен содержать минимум 3 символа."
+
+#: task_manager/users/forms.py:61 task_manager/users/forms.py:87
+msgid "Please enter your password again to confirm."
+msgstr "Пожалуйста, введите пароль ещё раз для подтверждения."
+
+#: task_manager/users/forms.py:75
 msgid "New Password"
 msgstr "Новый пароль"
 
-#: task_manager/users/forms.py:64
-msgid "Minimum 3 characters. Leave empty to keep current password."
-msgstr "Минимум 3 символа. Оставьте пустым, чтобы сохранить текущий пароль."
-
-#: task_manager/users/forms.py:68
+#: task_manager/users/forms.py:84
 msgid "Confirm Password"
 msgstr "Подтвердите пароль"
 
-#: task_manager/users/forms.py:92
-msgid "Password too short (min 3 characters)."
-msgstr "Пароль слишком короткий (минимум 3 символа)."
+#: task_manager/users/models.py:13
+msgid "First Name"
+msgstr "Имя"
 
-#: task_manager/users/models.py:15 task_manager/users/models.py:21
-msgid "Required. 150 characters or fewer."
-msgstr "Обязательное поле. Не более 150 символов."
+#: task_manager/users/models.py:19
+msgid "Last Name"
+msgstr "Фамилия"
 
-#: task_manager/users/views.py:26
+#: task_manager/users/views.py:24
 msgid "You don't have rights to change another user."
 msgstr "У вас нет прав изменять другого пользователя."
 
-#: task_manager/users/views.py:27
+#: task_manager/users/views.py:45
 msgid "User was registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:28
-msgid "User was updated successfully"
-msgstr "Пользователь успешно обновлен"
-
-#: task_manager/users/views.py:29
-msgid "User was deleted successfully"
-msgstr "Пользователь успешно удален"
-
-#: task_manager/users/views.py:30
-msgid "Cannot delete this user because they are being used"
-msgstr "Нельзя удалить этого пользователя, так как он используется"
-
-#: task_manager/users/views.py:36
+#: task_manager/users/views.py:46
 msgid "Sign Up"
 msgstr "Регистрация"
 
-#: task_manager/users/views.py:37
+#: task_manager/users/views.py:47
 msgid "Register"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:38
+#: task_manager/users/views.py:61
+msgid "User was updated successfully"
+msgstr "Пользователь успешно обновлен"
+
+#: task_manager/users/views.py:62
 msgid "Edit profile"
 msgstr "Редактировать профиль"
 
-#: task_manager/users/views.py:39
+#: task_manager/users/views.py:63
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: task_manager/users/views.py:40
+#: task_manager/users/views.py:77
+msgid "User was deleted successfully"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/users/views.py:78
+msgid "Cannot delete this user because they are being used"
+msgstr "Нельзя удалить этого пользователя, так как он используется"
+
+#: task_manager/users/views.py:79
 msgid "User deletion"
 msgstr "Удаление пользователя"
 
@@ -522,6 +509,24 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:24
 msgid "You were logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Minimum 3 characters."
+#~ msgstr "Минимум 3 символа."
+
+#~ msgid "Enter the same password for verification."
+#~ msgstr "Введите тот же пароль для подтверждения."
+
+#~ msgid "This username is already taken."
+#~ msgstr "Это имя пользователя уже занято."
+
+#~ msgid "Minimum 3 characters. Leave empty to keep current password."
+#~ msgstr "Минимум 3 символа. Оставьте пустым, чтобы сохранить текущий пароль."
+
+#~ msgid "Password too short (min 3 characters)."
+#~ msgstr "Пароль слишком короткий (минимум 3 символа)."
+
+#~ msgid "Required. 150 characters or fewer."
+#~ msgstr "Обязательное поле. Не более 150 символов."
 
 #~ msgid "Required. Max 255 characters."
 #~ msgstr "Обязательное поле. Максимум 255 символов."
