@@ -37,7 +37,6 @@ class BaseUserView(SuccessMessageMixin):
     template_name = 'users/form.html'
     context_object_name = 'user'
     permission_denied_url = USERS_INDEX_URL
-    success_url = USERS_INDEX_URL
 
 
 class UserCreateView(BaseUserView, CreateView):
@@ -57,35 +56,27 @@ class UserCreateView(BaseUserView, CreateView):
 
 class UserUpdateView(CustomLoginRequiredMixin, UserPermissionMixin,
                     BaseUserView, UpdateView):
-    class Constants:
-        SUCCESS_MESSAGE = _('User was updated successfully')
-        TITLE = _('Edit profile')
-        BUTTON_NAME = _('Save changes')
-
     form_class = CustomUserChangeForm
-    success_message = Constants.SUCCESS_MESSAGE
+    success_url = USERS_INDEX_URL
+    success_message = _('User was updated successfully')
     permission_denied_message = PERMISSION_DENIED_MESSAGE
     extra_context = {
-        'title': Constants.TITLE,
-        'button_name': Constants.BUTTON_NAME
+        'title': _('Edit profile'),
+        'button_name': _('Save changes')
     }
 
 
 class UserDeleteView(CustomLoginRequiredMixin, UserPermissionMixin,
                     ProtectErrorMixin, BaseUserView, DeleteView):
-    class Constants:
-        SUCCESS_MESSAGE = _('User was deleted successfully')
-        PROTECTED_MESSAGE = _('Cannot delete this user because they are being used')
-        TITLE = _('User deletion')
-        BUTTON_NAME = _('Yes, delete')
-
     template_name = 'users/delete.html'
-    success_message = Constants.SUCCESS_MESSAGE
+    success_url = USERS_INDEX_URL
+    success_message = _('User was deleted successfully')
     permission_denied_message = PERMISSION_DENIED_MESSAGE
     access_denied_message = PERMISSION_DENIED_MESSAGE
     protected_object_url = USERS_INDEX_URL
-    protected_object_message = Constants.PROTECTED_MESSAGE
+    protected_object_message = _('Cannot delete this user '
+        'because they are being used')
     extra_context = {
-        'title': Constants.TITLE,
-        'button_name': Constants.BUTTON_NAME
+        'title': _('User deletion'),
+        'button_name': _('Yes, delete')
     }
