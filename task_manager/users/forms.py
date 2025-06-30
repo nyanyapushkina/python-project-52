@@ -56,23 +56,27 @@ class CustomUserCreationForm(FormStyleMixin, UserCreationForm):
 class CustomUserChangeForm(FormStyleMixin, forms.ModelForm):
     """User edit form with password change support."""
     password1 = forms.CharField(
-        label=_("Password"),
+        label=_("New Password"),
         widget=forms.PasswordInput,
-        required=False,
+        required=True,
         help_text=_(
-            f"Leave blank if you don't want to change it. "
             f"Minimum {MIN_PASSWORD_LENGTH} characters."
         ),
     )
     password2 = forms.CharField(
-        label=_("Password confirmation"),
+        label=_("Confirm Password"),
         widget=forms.PasswordInput,
-        required=False,
+        required=True,
         help_text=_("Enter the same password for verification."),
     )
 
     class Meta(BaseUserForm.Meta):
-        fields = (*BaseUserForm.Meta.fields,)
+        fields = (*BaseUserForm.Meta.fields, 'password1', 'password2')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'password' in self.fields:
+            del self.fields['password']
 
     def clean(self):
         cleaned_data = super().clean()
