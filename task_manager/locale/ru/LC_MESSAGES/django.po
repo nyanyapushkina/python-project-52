@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-30 17:07+0300\n"
+"POT-Creation-Date: 2025-06-30 18:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -400,11 +400,11 @@ msgstr "Показать результат"
 msgid "No tasks found."
 msgstr "Задачи не найдены"
 
-#: task_manager/templates/users/form.html:13
+#: task_manager/templates/users/form.html:12
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
 
-#: task_manager/templates/users/form.html:15
+#: task_manager/templates/users/form.html:14
 msgctxt "button"
 msgid "Log In"
 msgstr "Вход"
@@ -426,33 +426,45 @@ msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./+/-/_."
 
-#: task_manager/users/forms.py:35
-msgid "Passwords don't match."
-msgstr "Пароли не совпадают."
-
-#: task_manager/users/forms.py:41
-#, fuzzy
-#| msgid "This password is too short. It must contain at least 3 characters."
-msgid "This password is too short. It must contain at least "
-msgstr "Этот пароль слишком короткий. Он должен содержать минимум 3 символа."
-
-#: task_manager/users/forms.py:58 task_manager/users/forms.py:79
+#: task_manager/users/forms.py:31
 #, fuzzy
 #| msgid "This password is too short. It must contain at least 3 characters."
 msgid "Your password must contain at least "
 msgstr "Этот пароль слишком короткий. Он должен содержать минимум 3 символа."
 
-#: task_manager/users/forms.py:61 task_manager/users/forms.py:87
+#: task_manager/users/forms.py:34
 msgid "Please enter your password again to confirm."
 msgstr "Пожалуйста, введите пароль ещё раз для подтверждения."
 
-#: task_manager/users/forms.py:75
-msgid "New Password"
+#: task_manager/users/forms.py:44 task_manager/users/forms.py:84
+msgid "Passwords don't match."
+msgstr "Пароли не совпадают."
+
+#: task_manager/users/forms.py:48 task_manager/users/forms.py:88
+#, fuzzy, python-format
+#| msgid "Password too short (min 3 characters)."
+msgid "Password must contain at least %(min_length)d characters."
+msgstr "Пароль слишком короткий (минимум 3 символа)."
+
+#: task_manager/users/forms.py:59
+#, fuzzy
+#| msgid "New Password"
+msgid "Password"
 msgstr "Новый пароль"
 
-#: task_manager/users/forms.py:84
-msgid "Confirm Password"
-msgstr "Подтвердите пароль"
+#: task_manager/users/forms.py:63
+msgid "Leave blank if you don't want to change it. "
+msgstr ""
+
+#: task_manager/users/forms.py:68
+#, fuzzy
+#| msgid "Passwords don't match."
+msgid "Password confirmation"
+msgstr "Пароли не совпадают."
+
+#: task_manager/users/forms.py:71
+msgid "Enter the same password for verification."
+msgstr "Введите тот же пароль для подтверждения."
 
 #: task_manager/users/models.py:13
 msgid "First Name"
@@ -484,7 +496,7 @@ msgstr "Пользователь успешно обновлен"
 
 #: task_manager/users/views.py:62
 msgid "Edit profile"
-msgstr "Редактировать профиль"
+msgstr "Редактирование профиля"
 
 #: task_manager/users/views.py:63
 msgid "Save changes"
@@ -510,20 +522,23 @@ msgstr "Вы залогинены"
 msgid "You were logged out"
 msgstr "Вы разлогинены"
 
+#, fuzzy
+#~| msgid "This password is too short. It must contain at least 3 characters."
+#~ msgid "This password is too short. It must contain at least "
+#~ msgstr ""
+#~ "Этот пароль слишком короткий. Он должен содержать минимум 3 символа."
+
+#~ msgid "Confirm Password"
+#~ msgstr "Подтвердите пароль"
+
 #~ msgid "Minimum 3 characters."
 #~ msgstr "Минимум 3 символа."
-
-#~ msgid "Enter the same password for verification."
-#~ msgstr "Введите тот же пароль для подтверждения."
 
 #~ msgid "This username is already taken."
 #~ msgstr "Это имя пользователя уже занято."
 
 #~ msgid "Minimum 3 characters. Leave empty to keep current password."
 #~ msgstr "Минимум 3 символа. Оставьте пустым, чтобы сохранить текущий пароль."
-
-#~ msgid "Password too short (min 3 characters)."
-#~ msgstr "Пароль слишком короткий (минимум 3 символа)."
 
 #~ msgid "Required. 150 characters or fewer."
 #~ msgstr "Обязательное поле. Не более 150 символов."
