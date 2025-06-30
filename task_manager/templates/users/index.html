@@ -28,16 +28,16 @@
             <td>{{ user.username }}</td>
             <td>{{ user.get_full_name }}</td>
             <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
-            <td class="text-end">
-              <nav class="btn-group btn-group-sm">
-                <a href="{% url 'users:update' user.id %}" class="btn btn-outline-light">
-                  {% trans "Edit" %}
-                </a>
-                <a href="{% url 'users:delete' user.id %}" class="btn btn-outline-danger">
-                  {% trans "Delete" %}
-                </a>
-              </nav>
-            </td>
+            <td class="text-center">
+                <div class="d-inline-flex flex-wrap justify-content-center gap-2">
+                  <a href="{% url 'users:update' user.id %}" class="btn btn-sm btn-outline-light">
+                    {% trans "Edit" %}
+                  </a>
+                  <a href="{% url 'users:delete' user.id %}" class="btn btn-sm btn-outline-danger">
+                    {% trans "Delete" %}
+                  </a>
+                </div>
+              </td>
           </tr>
           {% endfor %}
         </tbody>
