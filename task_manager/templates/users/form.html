@@ -6,16 +6,14 @@
 {% block form_button %}{{ button_name }}{% endblock %}
 
 {% block bottom_text %}
-  {% if request.resolver_match.url_name == 'create' %}
-    {% if is_create_view %}
+  {% if request.resolver_match.url_name == 'user_create' %}
     <div class="text-center mt-4">
       <small class="text-light text-opacity-50">
         {% trans "Already have an account?" %}
-        <a href="{% url 'login' %}" class="text-reset text-decoration-none">
+        <a href="{% url 'login' %}" class="text-decoration-none text-light">
           {% trans "Log In" context "button" %}
         </a>
       </small>
     </div>
-    {% endif %}
-  {% endwith %}
+  {% endif %}
 {% endblock %}
