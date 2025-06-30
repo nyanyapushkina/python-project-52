@@ -9,7 +9,7 @@ MIN_PASSWORD_LENGTH = 3
 
 
 class BaseUserForm:
-    """Basic config for user forms."""
+    """Base configuration for user forms."""
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username')
@@ -21,35 +21,8 @@ class BaseUserForm:
         }
 
 
-class UserFormPasswordMixin:
-    """Mixin for custom password validation logic."""
-    def custom_validate_passwords(self, cleaned_data):
-        """Validate password length and equality."""
-        password1 = cleaned_data.get("password1")
-        password2 = cleaned_data.get("password2")
-
-        if password1 and password2:
-            if password1 != password2:
-                self.add_error(
-                    "password2",
-                    _("Passwords don't match.")
-                )
-            elif len(password1) < MIN_PASSWORD_LENGTH:
-                self.add_error(
-                    "password2",
-                    _(
-                        "This password is too short. "
-                        f"It must contain at least "
-                        f"{MIN_PASSWORD_LENGTH} characters."
-                    ),
-                )
-        return cleaned_data
-
-
-class CustomUserCreationForm(FormStyleMixin, 
-                             UserCreationForm, 
-                             UserFormPasswordMixin):
-    """User registration form with custom validation and styling."""
+class CustomUserCreationForm(FormStyleMixin, UserCreationForm):
+    """User registration form with enhanced validation."""
     class Meta(BaseUserForm.Meta):
         fields = (*BaseUserForm.Meta.fields, 'password1', 'password2')
         help_texts = {
@@ -62,49 +35,67 @@ class CustomUserCreationForm(FormStyleMixin,
         }
 
     def clean(self):
-        """Validate password length and equality."""
         cleaned_data = super().clean()
-        return self.custom_validate_passwords(cleaned_data)
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 and password2:
+            if password1 != password2:
+                self.add_error("password2", _("Passwords don't match."))
+            elif len(password1) < MIN_PASSWORD_LENGTH:
+                self.add_error(
+                    "password2",
+                    _("Password must contain " 
+                    "at least %(min_length)d characters.") % {
+                        'min_length': MIN_PASSWORD_LENGTH
+                    }
+                )
+        return cleaned_data
 
 
-class CustomUserChangeForm(FormStyleMixin, 
-                           forms.ModelForm, 
-                           UserFormPasswordMixin):
-    """User profile edit form with password update support."""
+class CustomUserChangeForm(FormStyleMixin, forms.ModelForm):
+    """User edit form with password change support."""
     password1 = forms.CharField(
-        label=_("New Password"),
+        label=_("Password"),
         widget=forms.PasswordInput,
-        required=True,
+        required=False,
         help_text=_(
-            f"Your password must contain at least "
-            f"{MIN_PASSWORD_LENGTH} characters."
+            f"Leave blank if you don't want to change it. "
+            f"Minimum {MIN_PASSWORD_LENGTH} characters."
         ),
     )
     password2 = forms.CharField(
-        label=_("Confirm Password"),
+        label=_("Password confirmation"),
         widget=forms.PasswordInput,
-        required=True,
-        help_text=_("Please enter your password again to confirm."),
+        required=False,
+        help_text=_("Enter the same password for verification."),
     )
 
     class Meta(BaseUserForm.Meta):
-        fields = (*BaseUserForm.Meta.fields, 'password1', 'password2')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if 'password' in self.fields:
-            del self.fields['password']
+        fields = (*BaseUserForm.Meta.fields,)
 
     def clean(self):
-        """Validate password length and equality."""
         cleaned_data = super().clean()
-        return self.custom_validate_passwords(cleaned_data)
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 or password2:
+            if password1 != password2:
+                self.add_error("password2", _("Passwords don't match."))
+            elif len(password1) < MIN_PASSWORD_LENGTH:
+                self.add_error(
+                    "password2",
+                    _("Password must contain "
+                    "at least %(min_length)d characters.") % {
+                        'min_length': MIN_PASSWORD_LENGTH
+                    }
+                )
+        return cleaned_data
 
     def save(self, commit=True):
-        """Save updated user with new password if provided."""
         user = super().save(commit=False)
-        if password1 := self.cleaned_data.get("password1"):
-            user.set_password(password1)
+        if new_password := self.cleaned_data.get("password1"):
+            user.set_password(new_password)
         if commit:
             user.save()
         return user
