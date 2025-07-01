@@ -347,7 +347,7 @@ msgstr "Нет меток"
 
 #: task_manager/templates/tasks/index.html:25
 msgid "Show results"
-msgstr "Показать результат"
+msgstr "Показать"
 
 #: task_manager/templates/tasks/index.html:73
 msgid "No tasks found."
