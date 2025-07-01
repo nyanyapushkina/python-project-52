@@ -59,7 +59,8 @@ class TaskUpdateView(TaskBaseView, TaskFormMixin, UpdateView):
     }
 
 
-class TaskDeleteView(TaskBaseView, AuthorPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(TaskBaseView, AuthorPermissionMixin, 
+                     SuccessMessageMixin, DeleteView):
     """Delete task with author permission check."""
     template_name = 'tasks/delete.html'
     success_message = _('Task deleted successfully')

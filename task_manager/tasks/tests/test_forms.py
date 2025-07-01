@@ -51,7 +51,8 @@ class TestTaskForm(TaskTestCase):
             {self.user1, self.user2}
         )
         # Test that only specific fields are selected
-        self.assertFalse(hasattr(form.fields['executor'].queryset.first(), 'password'))
+        self.assertFalse(hasattr(form.fields['executor'].queryset.first(), 
+                                 'password'))
 
     def test_status_queryset(self):
         form = TaskForm()
@@ -59,7 +60,8 @@ class TestTaskForm(TaskTestCase):
             set(form.fields['status'].queryset),
             {self.status1, self.status2}
         )
-        self.assertFalse(hasattr(form.fields['status'].queryset.first(), 'created_at'))
+        self.assertFalse(hasattr(form.fields['status'].queryset.first(), 
+                                 'created_at'))
 
     def test_form_labels(self):
         form = TaskForm()

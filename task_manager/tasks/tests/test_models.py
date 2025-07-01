@@ -8,7 +8,8 @@ class TestTaskModel(TaskTestCase):
     def test_task_creation_with_labels_and_executor(self):
         task = Task.objects.create(
             name=self.valid_task_data['name'],  # "Find Mr. Tumnus"
-            description=self.valid_task_data['description'],  # "Search for the faun..."
+            description=self.valid_task_data['description'],  # "Search for 
+            # the faun..."
             status=self.status1,  # "In the Wardrobe"
             executor=self.user1,  # Lucy
             author=self.user2,  # Edmund

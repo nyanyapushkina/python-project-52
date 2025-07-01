@@ -32,7 +32,9 @@ class TestStatusCreateView(StatusTestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Status.objects.count(), 4)
-        self.assertTrue(Status.objects.filter(name='At Mr. Tumnus\'s House').exists())
+        self.assertTrue(
+            Status.objects.filter(name='At Mr. Tumnus\'s House').exists()
+        )
 
     def test_status_creation_unauthorized(self):
         response = self.client.post(
@@ -53,15 +55,26 @@ class TestStatusUpdateView(StatusTestCase):
             data={'name': updated_name},
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Status.objects.get(id=self.status1.id).name, updated_name)
+        self.assertEqual(
+            Status.objects.get(id=self.status1.id).name, updated_name
+        )
 
     def test_status_update_unauthorized(self):
-        original_name = self.status1.name
-        response = self.client.post(
-            reverse_lazy('statuses:update', kwargs={'pk': self.status1.id}),
-            data={'name': 'Should not change'},
+        status = self.status1
+        update_data = self.update_status_data
+
+        response = self.client.get(
+            reverse_lazy('statuses:update', kwargs={'pk': status.id})
         )
-        self.assertEqual(Status.objects.get(id=self.status1.id).name, original_name)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
+
+        response = self.client.post(
+            reverse_lazy('statuses:update', kwargs={'pk': status.id}),
+            data=update_data,
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
 
 
 class TestStatusDeleteView(StatusTestCase):

@@ -16,13 +16,17 @@ class TestTaskListView(TaskTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'tasks/task_list.html')
-        self.assertEqual(len(response.context['tasks']), self.task_count)  # 2 tasks from fixtures
+        self.assertEqual(len(response.context['tasks']), 
+                         self.task_count)  # 2 tasks from fixtures
 
 
 class TestTaskDetailView(TaskTestCase):
     def test_redirects_unauthorized_user(self):
         response = self.client.get(
-            reverse_lazy('tasks:detail', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:detail', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+            )
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -30,7 +34,10 @@ class TestTaskDetailView(TaskTestCase):
     def test_renders_detail_for_authorized_user(self):
         self.client.force_login(self.user1)  # Lucy Pevensie
         response = self.client.get(
-            reverse_lazy('tasks:detail', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:detail', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+                )
         )
 
         self.assertEqual(response.status_code, 200)
@@ -52,7 +59,8 @@ class TestTaskCreateView(TaskTestCase):
         self.assertRedirects(response, reverse_lazy('login'))
 
         response = self.client.post(
-            reverse_lazy('tasks:create'), data=self.valid_task_data  # "Find Mr. Tumnus"
+            reverse_lazy('tasks:create'), 
+            data=self.valid_task_data  # "Find Mr. Tumnus"
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -81,7 +89,10 @@ class TestTaskCreateView(TaskTestCase):
 class TestTaskUpdateView(TaskTestCase):
     def test_redirects_unauthenticated_user(self):
         response = self.client.get(
-            reverse_lazy('tasks:update', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:update', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+                )
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -98,7 +109,10 @@ class TestTaskUpdateView(TaskTestCase):
         update_data['name'] = 'Updated: Defeat the Witch'
 
         response = self.client.get(
-            reverse_lazy('tasks:update', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:update', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+                )
         )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'tasks/task_form.html')
@@ -115,7 +129,10 @@ class TestTaskUpdateView(TaskTestCase):
 class TestTaskDeleteView(TaskTestCase):
     def test_redirects_unauthenticated_user(self):
         response = self.client.get(
-            reverse_lazy('tasks:delete', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:delete', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+            )
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -131,7 +148,10 @@ class TestTaskDeleteView(TaskTestCase):
         initial_count = Task.objects.count()  # 2 from fixtures
 
         response = self.client.get(
-            reverse_lazy('tasks:delete', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:delete', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+                )
         )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'tasks/task_confirm_delete.html')
@@ -151,9 +171,15 @@ class TestTaskDeleteView(TaskTestCase):
         initial_count = Task.objects.count()  # 2 from fixtures
 
         response = self.client.get(
-            reverse_lazy('tasks:delete', kwargs={'pk': self.task1.id})  # "Defeat the White Witch"
+            reverse_lazy(
+                'tasks:delete', 
+                kwargs={'pk': self.task1.id}  # "Defeat the White Witch"
+            )
         )
-        self.assertEqual(response.status_code, 302)  # Redirects instead of showing form
+        self.assertEqual(
+            response.status_code, 
+            302  # Redirects instead of showing form
+        )
         self.assertRedirects(response, reverse_lazy('tasks'))
 
         response = self.client.post(

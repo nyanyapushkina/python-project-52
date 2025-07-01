@@ -43,7 +43,8 @@ class StatusUpdateView(StatusBaseView, SuccessMessageMixin, UpdateView):
     }
 
 
-class StatusDeleteView(StatusBaseView, SuccessMessageMixin, ProtectErrorMixin, DeleteView):
+class StatusDeleteView(StatusBaseView, SuccessMessageMixin, 
+                       ProtectErrorMixin, DeleteView):
     """Delete status with protection check."""
     template_name = 'statuses/delete.html'
     success_message = _('Status was deleted successfully')
