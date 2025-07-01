@@ -23,7 +23,7 @@ class Label(models.Model):
                 _("Cannot delete label in use"),
                 self
             )
-        return super().delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     def __str__(self):
         return self.name
