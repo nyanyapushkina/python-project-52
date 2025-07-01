@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: task_manager 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-01 17:38+0300\n"
+"POT-Creation-Date: 2025-07-01 18:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arina Khokhlova <khokhlova.arina.v@gmail.com>\n"
 "Language-Team: Russian <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "Имя"
 msgid "A label with this name already exists."
 msgstr "Метка с таким именем уже существует. Пожалуйста, выберите другое имя."
 
-#: task_manager/labels/models.py:23 task_manager/labels/views.py:53
+#: task_manager/labels/models.py:23 task_manager/labels/views.py:48
 msgid "Cannot delete label in use"
 msgstr "Нельзя удалить метку, так как она используется"
 
@@ -48,41 +48,41 @@ msgstr "Метка"
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/labels/views.py:32
+#: task_manager/labels/views.py:28
 msgid "Label created successfully"
 msgstr "Метка успешно создана"
 
-#: task_manager/labels/views.py:34 task_manager/templates/labels/index.html:13
+#: task_manager/labels/views.py:30 task_manager/templates/labels/index.html:13
 msgid "Create label"
 msgstr "Создать метку"
 
-#: task_manager/labels/views.py:35 task_manager/statuses/views.py:31
+#: task_manager/labels/views.py:31 task_manager/statuses/views.py:31
 #: task_manager/tasks/views.py:44
 msgid "Create"
 msgstr "Создать"
 
-#: task_manager/labels/views.py:41
+#: task_manager/labels/views.py:36
 msgid "Label updated successfully"
 msgstr "Метка успешно изменена"
 
-#: task_manager/labels/views.py:43
+#: task_manager/labels/views.py:38
 msgid "Update label"
 msgstr "Изменение метки"
 
-#: task_manager/labels/views.py:44 task_manager/statuses/views.py:42
+#: task_manager/labels/views.py:39 task_manager/statuses/views.py:42
 #: task_manager/tasks/views.py:58
 msgid "Update"
 msgstr "Изменить"
 
-#: task_manager/labels/views.py:51
+#: task_manager/labels/views.py:46
 msgid "Label deleted successfully"
 msgstr "Метка успешно удалена"
 
-#: task_manager/labels/views.py:55
+#: task_manager/labels/views.py:50
 msgid "Label deletion"
 msgstr "Удаление метки"
 
-#: task_manager/labels/views.py:56 task_manager/statuses/views.py:54
+#: task_manager/labels/views.py:51 task_manager/statuses/views.py:54
 #: task_manager/tasks/views.py:70 task_manager/users/views.py:81
 msgid "Yes, delete"
 msgstr "Да, удалить"
@@ -107,11 +107,11 @@ msgstr "У вас нет прав для изменения этого объе�
 msgid "Cannot delete object because it is being used."
 msgstr "Невозможно удалить объект, так как он используется."
 
-#: task_manager/settings.py:144
+#: task_manager/settings.py:143
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:145
+#: task_manager/settings.py:144
 msgid "Russian"
 msgstr "Русский"
 

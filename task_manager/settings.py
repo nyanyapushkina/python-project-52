@@ -54,8 +54,8 @@ INSTALLED_APPS = [
     'task_manager',
     'task_manager.users',
     'task_manager.statuses',
-    'task_manager.tasks',
     'task_manager.labels',
+    'task_manager.tasks',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -71,7 +71,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
-
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -165,9 +164,4 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
-}
-
-BOOTSTRAP5 = {
-    "alert_class": "alert alert-success",
-    "server_side_validation": True,
 }

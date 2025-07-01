@@ -9,26 +9,22 @@ from task_manager.mixins import CustomLoginRequiredMixin, ProtectErrorMixin
 
 
 class LabelBaseView(CustomLoginRequiredMixin):
-    """Base view for label operations."""
     model = Label
     success_url = reverse_lazy("labels:index")
 
 
 class LabelListView(LabelBaseView, ListView):
-    """Display list of all labels."""
     template_name = 'labels/index.html'
     context_object_name = 'labels'
     ordering = ['id']
 
 
 class LabelFormMixin(SuccessMessageMixin):
-    """Shared form configuration for create/update views."""
     template_name = 'labels/form.html'
     form_class = LabelForm
 
 
 class LabelCreateView(LabelBaseView, LabelFormMixin, CreateView):
-    """Create new label."""
     success_message = _('Label created successfully')
     extra_context = {
         'title': _('Create label'),
@@ -37,7 +33,6 @@ class LabelCreateView(LabelBaseView, LabelFormMixin, CreateView):
 
 
 class LabelUpdateView(LabelBaseView, LabelFormMixin, UpdateView):
-    """Update existing label."""
     success_message = _('Label updated successfully')
     extra_context = {
         'title': _('Update label'),
@@ -45,8 +40,8 @@ class LabelUpdateView(LabelBaseView, LabelFormMixin, UpdateView):
     }
 
 
-class LabelDeleteView(LabelBaseView, ProtectErrorMixin, DeleteView):
-    """Delete label with protection check."""
+class LabelDeleteView(LabelBaseView, SuccessMessageMixin, 
+                      ProtectErrorMixin, DeleteView):
     template_name = 'labels/delete.html'
     success_message = _('Label deleted successfully')
     protected_object_url = reverse_lazy('labels:index')
