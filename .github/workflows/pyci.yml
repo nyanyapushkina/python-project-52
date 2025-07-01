@@ -1,0 +1,44 @@
+name: Python CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DEBUG: False
+      DATABASE_URL: sqlite:///db.sqlite3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: 'pyproject.toml'
+
+      - name: Install uv and project dependencies
+        run: |
+          pip install uv
+          make install
+
+      - name: Run linter and tests
+        run: |
+          make check
+
+      - name: Run test coverage
+        run: |
+          make testcov
+
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=AlishaEvergreen_python-project-52
+            -Dsonar.organization=alishaevergreen
+            -Dsonar.python.coverage.reportPaths=coverage.xml
