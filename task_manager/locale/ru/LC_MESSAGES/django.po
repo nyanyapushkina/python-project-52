@@ -339,7 +339,7 @@ msgstr "Просмотр задачи"
 
 #: task_manager/templates/tasks/detail.html:26
 msgid "Not assigned"
-msgstr ""
+msgstr "Не назначена"
 
 #: task_manager/templates/tasks/detail.html:47
 msgid "No labels"

@@ -166,3 +166,8 @@ ROLLBAR = {
     'code_version': '1.0',
     'root': BASE_DIR,
 }
+
+BOOTSTRAP5 = {
+    "alert_class": "alert alert-success",
+    "server_side_validation": True,
+}

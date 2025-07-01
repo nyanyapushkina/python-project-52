@@ -49,7 +49,6 @@ class LabelDeleteView(LabelBaseView, ProtectErrorMixin, DeleteView):
     """Delete label with protection check."""
     template_name = 'labels/delete.html'
     success_message = _('Label deleted successfully')
-    success_message_tags = 'alert alert-success'
     protected_object_url = reverse_lazy('labels:index')
     protected_object_message = _('Cannot delete label in use')
     extra_context = {
