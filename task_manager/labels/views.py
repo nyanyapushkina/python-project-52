@@ -53,5 +53,5 @@ class LabelDeleteView(LabelBaseView, ProtectErrorMixin, DeleteView):
     protected_object_message = _('Cannot delete label in use')
     extra_context = {
         'title': _('Delete label'),
-        'button_name': _('Delete')
+        'button_name': _('Yes, delete')
     }
