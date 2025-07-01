@@ -421,7 +421,7 @@ msgstr "Фамилия"
 
 #: task_manager/users/views.py:24
 msgid "You don't have rights to change another user."
-msgstr "У вас нет прав изменять другого пользователя."
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/users/views.py:44
 msgid "User was registered successfully"
