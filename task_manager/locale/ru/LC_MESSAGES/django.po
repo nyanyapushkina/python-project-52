@@ -33,7 +33,7 @@ msgstr "Метка с таким именем уже существует. По�
 
 #: task_manager/labels/models.py:23 task_manager/labels/views.py:48
 msgid "Cannot delete label in use"
-msgstr "Нельзя удалить метку, так как она используется"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/labels/models.py:32 task_manager/tasks/filters.py:13
 msgid "Label"
