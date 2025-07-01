@@ -52,6 +52,6 @@ class LabelDeleteView(LabelBaseView, ProtectErrorMixin, DeleteView):
     protected_object_url = reverse_lazy('labels:index')
     protected_object_message = _('Cannot delete label in use')
     extra_context = {
-        'title': _('Delete label'),
+        'title': _('Label deletion'),
         'button_name': _('Yes, delete')
     }

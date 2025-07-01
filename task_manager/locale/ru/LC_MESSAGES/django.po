@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: task_manager 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-01 17:11+0300\n"
+"POT-Creation-Date: 2025-07-01 17:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arina Khokhlova <khokhlova.arina.v@gmail.com>\n"
 "Language-Team: Russian <LL@li.org>\n"
@@ -79,8 +79,8 @@ msgid "Label deleted successfully"
 msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:55
-msgid "Delete label"
-msgstr "Удалить метку"
+msgid "Label deletion"
+msgstr "Удаление метки"
 
 #: task_manager/labels/views.py:56 task_manager/statuses/views.py:54
 #: task_manager/tasks/views.py:70 task_manager/users/views.py:81
@@ -466,6 +466,9 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:24
 msgid "You were logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Delete label"
+#~ msgstr "Удалить метку"
 
 #~ msgid "Actions"
 #~ msgstr "Действия"
