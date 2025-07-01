@@ -76,7 +76,7 @@ msgstr "Изменить"
 
 #: task_manager/labels/views.py:51
 msgid "Label deleted successfully"
-msgstr "Метка успешно удалена!"
+msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:55
 msgid "Delete label"
