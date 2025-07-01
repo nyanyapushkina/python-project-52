@@ -437,7 +437,7 @@ msgstr "Зарегистрировать"
 
 #: task_manager/users/views.py:61
 msgid "User was updated successfully"
-msgstr "Пользователь успешно обновлен"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:64
 msgid "Edit profile"
