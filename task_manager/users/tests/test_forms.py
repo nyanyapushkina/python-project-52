@@ -15,10 +15,17 @@ class TestCustomUserCreationForm(UserTestCase):
         return CustomUserCreationForm(data=data)
 
     def test_valid_data(self):
-        form = self.get_form()
+        valid_data = {
+        'first_name': 'New',
+        'last_name': 'User',
+        'username': 'new_user',
+        'password1': 'NewPass123',
+        'password2': 'NewPass123'
+        }
+        form = CustomUserCreationForm(data=valid_data)
         self.assertTrue(form.is_valid())
         user = form.save()
-        self.assertEqual(user.username, self.valid_user_data['username'])
+        self.assertEqual(user.username, valid_data['username'])
         self.assertEqual(User.objects.count(), self.user_count + 1)
 
     def test_missing_fields(self):
@@ -77,7 +84,7 @@ class TestCustomUserCreationForm(UserTestCase):
         self.assertIn('last_name', form.errors)
 
     def test_duplicate_username(self):
-        form = self.get_form({'username': 'john_snow'})
+        form = self.get_form({'username': 'queen_lucy'})
         self.assertFalse(form.is_valid())
         self.assertIn('username', form.errors)
 
