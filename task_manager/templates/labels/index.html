@@ -32,7 +32,7 @@
             <td>{{ label.name }}</td>
             <td class="text-end">{{ label.created_at|date:"d.m.Y H:i" }}</td>
             <td class="text-center">
-              <div class="btn-group btn-group-sm" role="group">
+              <div class="d-inline-flex flex-wrap justify-content-center gap-2">
                 <a href="{% url 'labels:update' label.id %}" class="btn btn-outline-light">
                   {% trans "Edit" %}
                 </a>

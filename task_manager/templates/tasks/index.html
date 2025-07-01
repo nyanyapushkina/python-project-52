@@ -57,7 +57,7 @@
               <td>{{ task.executor|default_if_none:"" }}</td>
               <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
               <td class="text-center">
-                <div class="btn-group btn-group-sm" role="group">
+                <div class="d-inline-flex flex-wrap justify-content-center gap-2">
                   <a href="{% url 'tasks:update' task.id %}" class="btn btn-outline-light">
                     {% trans "Edit" %}
                   </a>

@@ -32,7 +32,7 @@
             <td>{{ status.name }}</td>
             <td class="text-end">{{ status.created_at|date:"d.m.Y H:i" }}</td>
             <td class="text-center">
-              <div class="btn-group btn-group-sm" role="group">
+              <div class="d-inline-flex flex-wrap justify-content-center gap-2">
                 <a href="{% url 'statuses:update' status.id %}" class="btn btn-outline-light">
                   {% trans "Edit" %}
                 </a>
