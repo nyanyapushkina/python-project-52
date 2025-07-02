@@ -19,7 +19,6 @@ class TaskTestCase(TestCase):
         self.user2 = User.objects.get(pk=2)
 
         self.status1 = Status.objects.get(pk=1)
-        self.status2 = Status.objects.get(pk=1)
 
         self.label1 = Label.objects.get(pk=1)
         self.label2 = Label.objects.get(pk=2)
@@ -43,7 +42,7 @@ class TaskTestCase(TestCase):
         self.update_task_data = {
             'name': 'Attend the Coronation',
             'description': 'Become the Queen of Narnia',
-            'status': self.status2.id,
+            'status': self.status1.id,
             'executor': self.user2.id,
             'labels': [self.label1.id, self.label2.id]
         }
