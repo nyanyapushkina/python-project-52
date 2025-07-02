@@ -21,7 +21,7 @@ class TestUserCreateView(UserTestCase):
     def test_get_create_form(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/registration_form.html')
+        self.assertTemplateUsed(response, 'users/form.html')
 
     def test_user_creation(self):
         initial_count = User.objects.count()
@@ -55,7 +55,7 @@ class TestUserDeleteView(UserTestCase):
             'users:delete', kwargs={'pk': user1.id})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/user_delete.html')
+        self.assertTemplateUsed(response, 'users/delete.html')
 
         response = self.client.post(reverse_lazy(
             'users:delete', kwargs={'pk': user1.id})
@@ -107,18 +107,18 @@ class TestUserUpdateView(UserTestCase):
         self.client.force_login(user1)
 
         update_data = {
-            'first_name': 'Edmund',
-            'last_name': 'Pevensie',
-            'username': 'king_edmund',
-            'password1': 'TurkishDelight123',
-            'password2': 'TurkishDelight123',
+            'first_name': 'Aslan',
+            'last_name': 'Great',
+            'username': 'king_of_beasts',
+            'password1': 'Emperor123',
+            'password2': 'Emperor123',
         }
 
         response = self.client.get(reverse_lazy(
             'users:update', kwargs={'pk': user1.id}
         ))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/registration_form.html')
+        self.assertTemplateUsed(response, 'users/form.html')
 
         response = self.client.post(
             reverse_lazy('users:update', kwargs={'pk': user1.id}),
@@ -132,9 +132,9 @@ class TestUserUpdateView(UserTestCase):
         self.assertRedirects(response, reverse_lazy('users:index'))
 
         updated_user = User.objects.get(id=user1.id)
-        self.assertEqual(updated_user.username, 'king_edmund')
-        self.assertEqual(updated_user.first_name, 'Edmund')
-        self.assertEqual(updated_user.last_name, 'Pevensie')
+        self.assertEqual(updated_user.username, 'king_of_beasts')
+        self.assertEqual(updated_user.first_name, 'Aslan')
+        self.assertEqual(updated_user.last_name, 'Great')
 
     def test_other_user_update_authorized(self):
         user1 = self.user1

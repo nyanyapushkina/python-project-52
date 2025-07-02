@@ -20,9 +20,9 @@ class StatusTestCase(TestCase):
         self.status_count = Status.objects.count()
 
         self.valid_status_data = {
-            'name': 'New',
+            'name': 'On Silver Chair',
         }
 
         self.update_status_data = {
-            'name': 'In testing',
+            'name': 'On the Voyage',
         }

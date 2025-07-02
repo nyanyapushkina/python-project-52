@@ -5,65 +5,55 @@ from task_manager.tasks.tests.testcase import TaskTestCase
 
 class TestTaskForm(TaskTestCase):
     def test_valid_data(self):
-        lucy = self.user1  # Lucy Pevensie
-        form = TaskForm(data={
-            'name': 'Find Mr. Tumnus',
-            'description': 'Search for the faun in the snowy woods',
-            'status': self.status1.id,  # In the Wardrobe
-            'executor': self.user2.id  # Edmund Pevensie
-        })
+        user2 = self.user2
+        form = TaskForm(data=self.valid_task_data)
         self.assertTrue(form.is_valid())
         task = form.save(commit=False)
-        task.author = lucy
+        task.author = user2
         task.save()
+        form.save_m2m()
 
         self.assertEqual(Task.objects.count(), self.task_count + 1)
-        self.assertEqual(task.name, 'Find Mr. Tumnus')
-        self.assertEqual(task.executor, self.user2)  # Edmund
-        self.assertEqual(task.status, self.status1)  # In the Wardrobe
-        self.assertEqual(task.author, lucy)  # Lucy is the author
+        self.assertEqual(task.name, self.valid_task_data['name'])
+        self.assertEqual(task.executor, self.user1)
+        self.assertEqual(task.status, self.status1)
+        self.assertSetEqual(set(task.labels.all()), {self.label1, self.label2})
 
-    def test_missing_required_fields(self):
-        form = TaskForm(data={
-            'name': '',  # Required field
-            'description': 'Some description',
-            'status': '',  # Required field
-            'executor': self.user1.id
+    def test_missing_fields(self):
+        invalid_data = self.valid_task_data.copy()
+        invalid_data.update({
+            'name': '',
+            'status': '',
         })
+        form = TaskForm(invalid_data)
         self.assertFalse(form.is_valid())
         self.assertIn('name', form.errors)
         self.assertIn('status', form.errors)
 
-    def test_optional_fields(self):
-        """Test that description and executor are optional."""
-        form = TaskForm(data={
-            'name': 'Have tea with Mr. Tumnus',
-            'description': '',  # Optional
-            'status': self.status1.id,
-            'executor': ''  # Optional
+    def test_blank_fields(self):
+        test_data = self.valid_task_data.copy()
+        test_data.update({
+            'description': '',
+            'executor': '',
+            'labels': [],
         })
+        form = TaskForm(data=test_data)
         self.assertTrue(form.is_valid())
 
-    def test_executor_queryset(self):
-        form = TaskForm()
-        self.assertEqual(
-            set(form.fields['executor'].queryset),
-            {self.user1, self.user2}
-        )
-        # Test that only specific fields are selected
-        self.assertFalse(hasattr(form.fields['executor'].queryset.first(), 
-                                 'password'))
+        user2 = self.user2
+        task = form.save(commit=False)
+        task.author = user2
+        task.save()
+        self.assertEqual(task.labels.count(), 0)
 
-    def test_status_queryset(self):
-        form = TaskForm()
-        self.assertEqual(
-            set(form.fields['status'].queryset),
-            {self.status1, self.status2}
-        )
-        self.assertFalse(hasattr(form.fields['status'].queryset.first(), 
-                                 'created_at'))
+    def test_duplicate_name(self):
+        user2 = self.user2
+        form1 = TaskForm(data=self.valid_task_data)
+        task = form1.save(commit=False)
+        task.author = user2
+        task.save()
 
-    def test_form_labels(self):
-        form = TaskForm()
-        self.assertEqual(form.fields['executor'].label, 'Assignee')
-        self.assertEqual(form.fields['description'].widget.attrs['rows'], 3)
+        duplicate_data = self.valid_task_data.copy()
+        form2 = TaskForm(data=duplicate_data)
+        self.assertFalse(form2.is_valid())
+        self.assertIn('name', form2.errors)

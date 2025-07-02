@@ -23,5 +23,5 @@ class LabelTestCase(TestCase):
         }
 
         self.update_label_data = {
-            'name': 'The Lion, the Witch and the Wardrobe',
+            'name': 'The Lion the Witch and the Wardrobe',
         }

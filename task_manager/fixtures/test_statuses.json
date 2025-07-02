@@ -14,13 +14,5 @@
             "name": "On Aslan's Side",
             "created_at": "1949-11-02T14:30:00Z"
         }
-    },
-    {
-        "model": "statuses.status",
-        "pk": 3,
-        "fields": {
-            "name": "Crowned at Cair Paravel",
-            "created_at": "1944-04-08T18:45:00Z"
-        }
     }
 ]

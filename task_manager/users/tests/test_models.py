@@ -20,18 +20,18 @@ class TestUserModel(UserTestCase):
         self.assertEqual(User.objects.count(), initial_count + 1)
 
         db_user = User.objects.get(username=self.valid_user_data['username'])
-        self.assertEqual(db_user.username, 'queen_lucy')
-        self.assertEqual(db_user.first_name, 'Lucy')
+        self.assertEqual(db_user.username, 'queen_susan')
+        self.assertEqual(db_user.first_name, 'Susan')
         self.assertEqual(db_user.last_name, 'Pevensie')
-        self.assertTrue(db_user.check_password('Valiant123'))
-        self.assertEqual(str(db_user), 'Lucy Pevensie')
+        self.assertTrue(db_user.check_password('Gentle123'))
+        self.assertEqual(str(db_user), 'Susan Pevensie')
 
     def test_duplicate_username(self):
         self.create_test_user()
         with self.assertRaises(Exception):
             self.create_test_user(
-                first_name='Edmund',
-                last_name='Pevensie',
-                username='queen_lucy',
-                password='JustKing123'
+                first_name='Other',
+                last_name='Someone',
+                username='queen_susan',
+                password='Password'
             )

@@ -4,9 +4,8 @@ from task_manager.statuses.tests.testcase import StatusTestCase
 
 class TestStatusModel(StatusTestCase):
     def create_test_status(self, **overrides):
-        """Helper to create a status with optional overrides."""
         status_data = {
-            'name': 'At the Stone Table',
+            'name': self.valid_status_data['name'],
         }
         status_data.update(overrides)
         return Status.objects.create(**status_data)
@@ -17,13 +16,14 @@ class TestStatusModel(StatusTestCase):
         self.assertEqual(Status.objects.count(), initial_count + 1)
 
         db_status = Status.objects.get(pk=status.pk)
-        self.assertEqual(db_status.name, 'At the Stone Table')
+        self.assertEqual(db_status.name, self.valid_status_data['name'])
         self.assertIsNotNone(db_status.created_at)
-        self.assertEqual(str(db_status), 'At the Stone Table')
+        self.assertEqual(str(db_status), self.valid_status_data['name'])
 
     def test_duplicate_status_name(self):
+        self.create_test_status(name=self.valid_status_data['name'])
         with self.assertRaises(Exception):
-            self.create_test_status(name='In the Wardrobe')
+            self.create_test_status()
 
     def test_blank_status_name(self):
         status = Status(name='')

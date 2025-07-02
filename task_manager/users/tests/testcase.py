@@ -15,11 +15,11 @@ class UserTestCase(TestCase):
         self.user_count = User.objects.count()
 
         self.valid_user_data = {
-            'first_name': 'Lucy',
+            'first_name': 'Susan',
             'last_name': 'Pevensie',
-            'username': 'queen_lucy',
-            'password1': 'Valiant123',
-            'password2': 'Valiant123'
+            'username': 'queen_susan',
+            'password1': 'Gentle123',
+            'password2': 'Gentle123'
         }
 
         self.update_user_data = {
