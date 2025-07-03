@@ -20,32 +20,35 @@ Live demo available at: [https://python-project-52-3ho6.onrender.com](https://py
 
 ### Prerequisites
 - Python 3.9+
-- PostgreSQL
 
 ### Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/nyanyapushkina/python-project-52.git
    cd python-project-52
-2. Install dependencies:
+2. Create and activate virtual environment:
    ```bash
-   poetry install
-3. Configure environment:
+   python -m venv venv
+   source venv/bin/activate  # Linux/MacOS
+   # OR
+   venv\Scripts\activate    # Windows
+3. Install dependencies:
+   ```bash
+   pip install -e .
+4. Configure environment:
 Create .env file in the project root:
-   ```ini
-   SECRET_KEY=your_django_secret_key
-   DATABASE_URL=postgres://user:password@localhost:5432/dbname
-4. Database setup:
+	```ini
+	SECRET_KEY=your_django_secret_key
+    DATABASE_URL=postgres://
+5. Database setup:
 	```bash
 	python manage.py migrate
-5. Create admin user:
+6. Create admin user:
 	```bash
 	python manage.py createsuperuser
-6. Run the server:
-	```bash
+7. Run the server:
+    ```bash
 	python manage.py runserver
-
-
 ## Contact
 
 For any inquiries, please contact me at:  
